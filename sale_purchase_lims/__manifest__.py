@@ -16,10 +16,9 @@
         "product_attribute_lims",
     ],
     "data": [
-        "data/mail_data.xml",
-        "views/product_views.xml",
+        # "views/product_views.xml",
         "views/sale_order_views.xml",
-        "views/purchase_order_views.xml",
+        # "views/purchase_order_views.xml",
     ],
     "installable": True,
 }
