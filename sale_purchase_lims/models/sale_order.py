@@ -20,6 +20,7 @@ class SaleOrderLine(models.Model):
 
     def _purchase_sample_create(self):
         sale_line_purchase_map = {}
+        supplier_po_map = {}
         for line in self:
             line = line.with_company(line.company_id)
             # determine vendor of the order (take the first matching company and product)
@@ -27,6 +28,13 @@ class SaleOrderLine(models.Model):
             # add a PO line to the PO
             values = line._purchase_sample_prepare_line_values(purchase_order)
             line.env["purchase.order.line"].create(values)
+            origins = []
+            if purchase_order.origin:
+                origins = purchase_order.origin.split(", ") + origins
+            if line.order_id.name not in origins:
+                origins += [line.order_id.name]
+                purchase_order.write({"origin": ", ".join(origins)})
+            supplier_po_map[line.order_id.partner_id.id] = purchase_order
             return sale_line_purchase_map
 
     def _get_purchase_order(self, line):
