@@ -3,6 +3,7 @@
 import datetime
 
 from odoo import models
+from odoo.tools import float_compare
 
 
 class SaleOrder(models.Model):
@@ -17,6 +18,54 @@ class SaleOrder(models.Model):
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
+
+    def write(self, values):
+        increased_lines = None
+        decreased_lines = None
+        increased_values = {}
+        decreased_values = {}
+        if "product_uom_qty" in values:
+            precision = self.env["decimal.precision"].precision_get(
+                "Product Unit of Measure"
+            )
+            increased_lines = self.sudo().filtered(
+                lambda r: r.product_id.is_product_sample
+                and r.purchase_line_count
+                and float_compare(
+                    r.product_uom_qty,
+                    values["product_uom_qty"],
+                    precision_digits=precision,
+                )
+                == -1
+            )
+            decreased_lines = self.sudo().filtered(
+                lambda r: r.product_id.is_product_sample
+                and r.purchase_line_count
+                and float_compare(
+                    r.product_uom_qty,
+                    values["product_uom_qty"],
+                    precision_digits=precision,
+                )
+                == 1
+            )
+            increased_values = {
+                line.id: line.product_uom_qty for line in increased_lines
+            }
+            decreased_values = {
+                line.id: line.product_uom_qty for line in decreased_lines
+            }
+
+        result = super(SaleOrderLine, self).write(values)
+
+        if increased_lines:
+            increased_lines._purchase_increase_ordered_qty(
+                values["product_uom_qty"], increased_values
+            )
+        if decreased_lines:
+            decreased_lines._purchase_decrease_ordered_qty(
+                values["product_uom_qty"], decreased_values
+            )
+        return result
 
     def _purchase_sample_create(self):
         sale_line_purchase_map = {}
@@ -110,3 +159,70 @@ class SaleOrderLine(models.Model):
             "order_id": purchase_order.id,
             "sale_line_id": self.id,
         }
+
+    # --------------------------
+    # Business Methods
+    # --------------------------
+
+    def _purchase_decrease_ordered_qty(self, new_qty, origin_values):
+        """Decrease the quantity from SO line will add a next
+        acitivities on the related purchase order
+        :param new_qty: new quantity (lower than the current
+        one on SO line), expressed
+            in UoM of SO line.
+        :param origin_values: map from sale line id to old
+        value for the ordered quantity (dict)
+        """
+        purchase_to_notify_map = {}  # map PO -> set(SOL)
+        last_purchase_lines = self.env["purchase.order.line"].search(
+            [("sale_line_id", "in", self.ids)]
+        )
+        for purchase_line in last_purchase_lines:
+            purchase_to_notify_map.setdefault(
+                purchase_line.order_id, self.env["sale.order.line"]
+            )
+            purchase_to_notify_map[purchase_line.order_id] |= purchase_line.sale_line_id
+
+        # create next activity
+        for purchase_order, sale_lines in purchase_to_notify_map.items():
+            render_context = {
+                "sale_lines": sale_lines,
+                "sale_orders": sale_lines.mapped("order_id"),
+                "origin_values": origin_values,
+            }
+            purchase_order._activity_schedule_with_view(
+                "mail.mail_activity_data_warning",
+                user_id=purchase_order.user_id.id or self.env.uid,
+                views_or_xmlid="sale_purchase.exception_purchase_on_sale_quantity_decreased",
+                render_context=render_context,
+            )
+
+    def _purchase_increase_ordered_qty(self, new_qty, origin_values):
+        """Increase the quantity on the related purchase lines
+        :param new_qty: new quantity (higher than the current one on SO line), expressed
+            in UoM of SO line.
+        :param origin_values: map from sale line id to old value for the ordered quantity (dict)
+        """
+        for line in self:
+            last_purchase_line = self.env["purchase.order.line"].search(
+                [("sale_line_id", "=", line.id)], order="create_date DESC", limit=1
+            )
+            if last_purchase_line.state in [
+                "draft",
+                "sent",
+                "to approve",
+            ]:  # update qty for draft PO lines
+                quantity = line.product_uom._compute_quantity(
+                    new_qty, last_purchase_line.product_uom
+                )
+                last_purchase_line.write({"product_qty": quantity})
+            elif last_purchase_line.state in [
+                "purchase",
+                "done",
+                "cancel",
+            ]:  # create new PO, by forcing the quantity as the difference from SO line
+                quantity = line.product_uom._compute_quantity(
+                    new_qty - origin_values.get(line.id, 0.0),
+                    last_purchase_line.product_uom,
+                )
+                line._purchase_service_create(quantity=quantity)

@@ -6,12 +6,11 @@ from odoo.tests.common import TransactionCase
 
 class TestSalePurchase(TransactionCase):
     def _create_order(self):
-        order = self.env["sale.order"].create(
+        return self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
             }
         )
-        return order
 
     def _create_line(self, order, product_id):
         self.env["sale.order.line"].create(
@@ -31,12 +30,18 @@ class TestSalePurchase(TransactionCase):
         ).unlink()
 
     def _get_purchase_order_by_origin(self, origin):
-        purchase_order = self.env["purchase.order"].search([("origin", "=", origin)])
-        return purchase_order
+        return self.env["purchase.order"].search([("origin", "=", origin)])
 
     def _get_purchase_order_in_origin(self, origin):
-        purchase_order = self.env["purchase.order"].search([("origin", "in", origin)])
-        return purchase_order
+        return self.env["purchase.order"].search([("origin", "in", origin)])
+
+    def _get_mail_activity(self, purchase_order):
+        return self.env["mail.activity"].search(
+            [
+                ("res_model_id", "=", self.env["ir.model"]._get("purchase.order").id),
+                ("res_id", "=", purchase_order.id),
+            ]
+        )
 
     def setUp(self):
         super(TestSalePurchase, self).setUp()
@@ -341,7 +346,7 @@ class TestSalePurchase(TransactionCase):
             order_2.order_line[0].product_id,
         )
 
-    def test_create_sale_sample_confirm_draft_change_quantity(self):
+    def test_create_sale_sample_confirm_draft_change_quantity_more(self):
         order = self._create_order()
         self._create_line(order, self.product_sample)
         order.action_confirm()
@@ -368,6 +373,34 @@ class TestSalePurchase(TransactionCase):
             purchase_order.order_line[0].product_qty,
             order.order_line[0].product_uom_qty,
         )
+
+    def test_create_sale_sample_confirm_draft_change_quantity_less(self):
+        order = self._create_order()
+        self._create_line(order, self.product_sample)
+        order.order_line[0].product_uom_qty = 2
+        order.action_confirm()
+
+        order.action_cancel()
+
+        order.action_draft()
+
+        order.order_line[0].product_uom_qty = 1
+
+        order.action_confirm()
+
+        purchase_order = self._get_purchase_order_by_origin(order.name)
+
+        mail_activity = self._get_mail_activity(purchase_order)
+
+        self.assertEqual(len(purchase_order), 1)
+
+        self.assertEqual(len(purchase_order.order_line), 1)
+
+        self.assertEqual(
+            purchase_order.order_line[0].product_id, order.order_line[0].product_id
+        )
+
+        self.assertEqual(mail_activity.activity_type_id.name, "Exception")
 
     def test_create_Sale_sample_confirm_draft_add_sample_line_confirm(self):
         order = self._create_order()
@@ -411,11 +444,10 @@ class TestSalePurchase(TransactionCase):
         order.action_confirm()
 
         purchase_order = self._get_purchase_order_by_origin(order.name)
+        mail_activity = self._get_mail_activity(purchase_order)
 
         self.assertEqual(len(purchase_order), 1)
 
-        # self.assertEqual(len(purchase_order.order_line), 1)
+        self.assertEqual(len(purchase_order.order_line), 2)
 
-        self.assertEqual(
-            purchase_order.order_line[0].product_id, order.order_line[0].product_id
-        )
+        self.assertEqual(mail_activity.activity_type_id.name, "Exception")
