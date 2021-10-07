@@ -1,3 +1,3 @@
-# Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# Copyright 2021 - Daniel Dominguez <https://xtendoo.es>
 
 from . import models

@@ -1,4 +1,4 @@
-# Copyright 2021 - Manuel Calero https://xtendoo.es/
+# Copyright 2021 - Daniel Domínguez https://xtendoo.es/
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 import datetime
 
@@ -159,10 +159,6 @@ class SaleOrderLine(models.Model):
             "order_id": purchase_order.id,
             "sale_line_id": self.id,
         }
-
-    # --------------------------
-    # Business Methods
-    # --------------------------
 
     def _purchase_decrease_ordered_qty(self, new_qty, origin_values):
         """Decrease the quantity from SO line will add a next
