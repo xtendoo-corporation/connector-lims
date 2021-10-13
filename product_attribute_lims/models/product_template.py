@@ -19,3 +19,4 @@ class ProductTemplate(models.Model):
             raise ValidationError(
                 _("You can only create sample products if they are storable.")
             )
+        self.tracking = "lot"

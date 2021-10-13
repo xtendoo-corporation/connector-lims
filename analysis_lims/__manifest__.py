@@ -13,6 +13,10 @@
         "sale_purchase_lims",
         "product_attribute_lims",
     ],
-    "data": [],
+    "data": [
+        # "views/analysis_test_view.xml",
+        "views/stock_picking_view.xml",
+        "views/product_view.xml",
+    ],
     "installable": True,
 }

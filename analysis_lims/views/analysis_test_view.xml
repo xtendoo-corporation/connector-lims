@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="analysis_lims.analysis_test_lims_form" model="ir.ui.view">
+        <field name="name">analysis.test.lims.form</field>
+        <field name="model">analysis.test.lims</field>
+        <field name="arch" type="xml">
+            <form>
+                <label for="name" />
+                <field name="name" />
+            </form>
+        </field>
+    </record>
+</odoo>
