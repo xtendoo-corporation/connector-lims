@@ -7,13 +7,19 @@ from odoo import fields, models
 class AnalysisLims(models.Model):
     _name = "analysis.lims"
     _description = "Analysis LIMS"
-    # Partner Analysis campo por si pertenece a un analisis padre
+
+    name = fields.Char(
+        string="Name",
+        store=True
+    )
     quality_check_ids = fields.Many2one(
-        "quality.checks.lims", "Quality Checks", invisible=True
+        "quality.checks.lims",
+        "Quality Checks",
+        invisible=True,
     )
 
-    name = fields.Char(string="Name", store=True)
-
     analysis_line_ids = fields.One2many(
-        "analysis.line.lims", "analysis_ids", invisible=True
+        "analysis.line.lims",
+        "analysis_ids",
+        invisible=True,
     )

@@ -12,6 +12,10 @@ class ProductTemplate(models.Model):
         string="Is a product sample",
         default=False,
     )
+    quality_checks_ids = fields.Many2one(
+        "quality.checks.lims",
+        string="Quality Checks",
+    )
 
     @api.constrains("is_product_sample", "type")
     def _check_is_product_sample(self):

@@ -15,6 +15,8 @@
         "purchase",
         "stock",
         "product",
+        "analysis_lims",
+        "sale_purchase_lims",
     ],
     "data": ["views/product_view.xml"],
     "installable": True,

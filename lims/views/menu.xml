@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    Copyright 2017-2019 MuK IT GmbH
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+
+  -->
+<odoo>
+    <menuitem
+        id="main_menu_lims"
+        name="Documents"
+        web_icon="lims,static/description/icon.png"
+    />
+    <menuitem
+        id="cat_menu_lims_config"
+        name="Configuration"
+        parent="main_menu_lims"
+        sequence="50"
+    />
+    <menuitem
+        id="cat_menu_lims_config_organizing"
+        name="Organizing"
+        parent="cat_menu_lims_config"
+        sequence="5"
+    />
+    <menuitem
+        id="cat_menu_lims_config_system"
+        name="System"
+        groups="lims.group_lims_manager"
+        parent="cat_menu_lims_config"
+        sequence="25"
+    />
+</odoo>

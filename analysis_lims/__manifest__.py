@@ -9,10 +9,6 @@
     "author": "Xtendoo, Odoo Community Association (OCA)",
     "category": "Warehouse",
     "website": "https://github.com/OCA/connector-lims",
-    "depends": [
-        "sale_purchase_lims",
-        "product_attribute_lims",
-    ],
     "data": [
         "views/quality_checks_lims_views.xml",
         "views/analysis_lims_views.xml",
