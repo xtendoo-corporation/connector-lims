@@ -12,7 +12,6 @@
                     <field name="product_id" />
                     <field name="description" />
                     <field name="lot_id" />
-                    <field name="quality_check_ids" />
                     <!--<field name="regulation"></field>-->
                 </group>
                 <group name="General Information" string="General Information">

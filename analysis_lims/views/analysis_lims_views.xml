@@ -26,9 +26,9 @@
 
     <record id="quality_checks_action" model="ir.actions.act_window">
         <field name="name">Quality Checks</field>
-        <field name="res_model">anlysis.lims</field>
+        <field name="res_model">analysis.lims</field>
         <field name="view_mode">tree</field>
         <field name="target">current</field>
-         <field name="domain">[('quality_checks_ids', '!=', '1')]</field>
+         <field name="domain">[('quality_check_ids', '!=', '1')]</field>
     </record>
 </odoo>
