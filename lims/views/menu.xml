@@ -8,7 +8,7 @@
 <odoo>
     <menuitem
         id="main_menu_lims"
-        name="Documents"
+        name="LIMS"
         web_icon="lims,static/description/icon.png"
     />
     <menuitem
@@ -23,11 +23,11 @@
         parent="cat_menu_lims_config"
         sequence="5"
     />
-    <menuitem
-        id="cat_menu_lims_config_system"
-        name="System"
-        groups="lims.group_lims_manager"
-        parent="cat_menu_lims_config"
-        sequence="25"
-    />
+<!--    <menuitem-->
+<!--        id="cat_menu_lims_config_system"-->
+<!--        name="System"-->
+<!--        groups="lims.group_lims_manager"-->
+<!--        parent="cat_menu_lims_config"-->
+<!--        sequence="25"-->
+<!--    />-->
 </odoo>
