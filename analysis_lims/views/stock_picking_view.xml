@@ -1,16 +1,18 @@
 <?xml version="1.0" ?>
 <odoo>
-    <record id="analysis_lims.stock_picking_view_lims_form" model="ir.ui.view">
+    <record id="stock_picking_view_lims_form" model="ir.ui.view">
         <field name="name">stock.picking.view.lims.form</field>
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
             <button name="action_confirm" position="after">
+                <field name="have_quality_check" invisible="1" />
                <button
-                    name="quality_checks"
-                    type="object"
+                    name="analysis_lims.quality_checks_action"
+                    type="button"
                     string="Quality Checks"
                     class="btn btn-success"
+                    attrs="{'invisible': ['|', ('have_quality_check', '!=', True), ('state', '!=', 'done')]}"
                 />
             </button>
         </field>

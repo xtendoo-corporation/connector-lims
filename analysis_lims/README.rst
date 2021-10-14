@@ -25,17 +25,11 @@ Analysis LIMS
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-TO-DO
 
 **Table of contents**
 
 .. contents::
    :local:
-
-Usage
-=====
-
-TO-DO
 
 Bug Tracker
 ===========
@@ -54,13 +48,6 @@ Authors
 ~~~~~~~
 
 * Xtendoo
-
-Contributors
-~~~~~~~~~~~~
-
-* `Xtendoo <https://xtendoo.es>`_:
-  * Manuel Calero
-  * Daniel Dominguez
 
 Maintainers
 ~~~~~~~~~~~

@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="quality_check_lims_form" model="ir.ui.view">
+        <field name="name">quality.checks.lims.form</field>
+        <field name="model">quality.checks.lims</field>
+        <field name="arch" type="xml">
+            <form>
+                <label for="name" />
+                <field name="name" />
+            </form>
+        </field>
+    </record>
+
+    <record id="quality_check_lims_tree" model="ir.ui.view">
+        <field name="name">quality.checks.lims.tree</field>
+        <field name="model">quality.checks.lims</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_ids" />
+                <field name="lot_id" />
+                <field name="checked_date" />
+                <field name="checked_by" />
+                <field name="status" />
+            </tree>
+        </field>
+    </record>
+</odoo>

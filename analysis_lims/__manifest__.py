@@ -14,9 +14,12 @@
         "product_attribute_lims",
     ],
     "data": [
-        # "views/analysis_test_view.xml",
+        "views/quality_checks_lims_views.xml",
+        "views/analysis_lims_views.xml",
+        "views/analysis_line_lims_views.xml",
         "views/stock_picking_view.xml",
         "views/product_view.xml",
+        "security/ir.model.access.csv",
     ],
     "installable": True,
 }
