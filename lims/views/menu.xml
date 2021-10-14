@@ -12,6 +12,12 @@
         web_icon="lims,static/description/icon.png"
     />
     <menuitem
+        id="cat_menu_lims_products"
+        name="Products"
+        parent="main_menu_lims"
+        sequence="40"
+    />
+    <menuitem
         id="cat_menu_lims_config"
         name="Configuration"
         parent="main_menu_lims"
