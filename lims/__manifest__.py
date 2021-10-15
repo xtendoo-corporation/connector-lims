@@ -19,6 +19,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/menu.xml",
+        "views/product.xml",
         "views/res_config_settings.xml",
     ],
     "images": ["static/description/banner.png"],

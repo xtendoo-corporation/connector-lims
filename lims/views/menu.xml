@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-
-    Copyright 2017-2019 MuK IT GmbH
-    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
-
-  -->
+# Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
 <odoo>
     <menuitem
         id="main_menu_lims"
@@ -12,10 +10,12 @@
         web_icon="lims,static/description/icon.png"
     />
     <menuitem
-        id="cat_menu_lims_products"
+        id="cat_menu_lims_product"
         name="Products"
         parent="main_menu_lims"
-        sequence="40"
+        sequence="0"
+        action="action_product_product_sample"
+        groups="base.group_system"
     />
     <menuitem
         id="cat_menu_lims_config"
@@ -29,7 +29,17 @@
         parent="cat_menu_lims_config"
         sequence="5"
     />
-<!--    <menuitem-->
+
+<!--    <record id="action_product_product_sample" model="ir.actions.act_window">-->
+<!--        <field name="name">General Settings</field>-->
+<!--        <field name="type">ir.actions.act_window</field>-->
+<!--        <field name="res_model">res.config.settings</field>-->
+<!--        <field name="view_mode">form</field>-->
+<!--        <field name="target">inline</field>-->
+<!--        <field name="context">{'module' : 'lims'}</field>-->
+<!--    </record>-->
+
+    <!--    <menuitem-->
 <!--        id="cat_menu_lims_config_system"-->
 <!--        name="System"-->
 <!--        groups="lims.group_lims_manager"-->
