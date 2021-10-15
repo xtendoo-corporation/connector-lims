@@ -9,6 +9,11 @@
     "author": "Xtendoo, Odoo Community Association (OCA)",
     "category": "Warehouse",
     "website": "https://github.com/OCA/connector-lims",
+    "depends": [
+        "base",
+        "stock",
+        "product",
+    ],
     "data": [
         "views/quality_checks_lims_views.xml",
         "views/analysis_lims_views.xml",
