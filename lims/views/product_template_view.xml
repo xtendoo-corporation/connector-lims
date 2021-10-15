@@ -23,6 +23,12 @@
                     string="LIMS"
                     attrs="{'invisible': [('is_product_sample', '!=', True)]}"
                 >
+                    <label for="analysis_ids" />
+                    <field
+                        name="analysis_ids"
+                        widget="many2many_tags"
+                        groups="base.group_no_one"
+                    />
                 </page>
             </notebook>
         </field>
@@ -55,4 +61,5 @@
             </xpath>
         </field>
     </record>
+
 </odoo>
