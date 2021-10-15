@@ -13,6 +13,10 @@
             <form>
                 <label for="name" />
                 <field name="name" />
+                <label for="analysis_id" />
+                <field name="analysis_id" />
+                <label for="stock_move_line_id" />
+                <field name="stock_move_line_id" />
             </form>
         </field>
     </record>
@@ -24,6 +28,8 @@
             <form>
                 <tree>
                     <field name="name" />
+                    <field name="analysis_id" />
+                    <field name="stock_move_line_id" />
                 </tree>
             </form>
         </field>

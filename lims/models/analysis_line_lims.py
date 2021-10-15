@@ -10,10 +10,15 @@ class AnalysisLineLims(models.Model):
 
     name = fields.Char(string="Name", store=True)
 
-    analysis_ids = fields.Many2one(
+    analysis_id = fields.Many2one(
         "analysis.lims",
         "Analysis",
         invisible=True,
+    )
+
+    stock_move_line_id = fields.Many2one(
+        "stock.move.line",
+        "Stock Move line",
     )
 
     # Partner Analysis campo por si pertenece a un analisis padre
@@ -100,6 +105,3 @@ class AnalysisLineLims(models.Model):
     #     comodel_name="res.user",
     #     string="Sampler",
     # )
-
-    # def _compute_analysis_line_name(self):
-    #     self.name = "Analisis"

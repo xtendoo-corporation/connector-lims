@@ -13,7 +13,7 @@ class ProductTemplate(models.Model):
         default=False,
     )
     analysis_ids = fields.One2many(
-        "analysis.lims",
+        "quality.check",
         "product_ids",
         invisible=True,
     )

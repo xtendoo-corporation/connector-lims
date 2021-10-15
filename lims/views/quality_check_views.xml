@@ -6,43 +6,46 @@
 <odoo>
 
 
-    <record id="analysis_lims_form" model="ir.ui.view">
-        <field name="name">analysis.lims.form</field>
-        <field name="model">analysis.lims</field>
+    <record id="quality_check_form" model="ir.ui.view">
+        <field name="name">quality.check.form</field>
+        <field name="model">quality.check</field>
         <field name="arch" type="xml">
             <form>
                 <label for="name" />
                 <field name="name" />
+                <label for="analysis_ids" />
+                <field name="analysis_ids" widget="many2many_tags" />
             </form>
         </field>
     </record>
 
-    <record id="analysis_lims_tree" model="ir.ui.view">
-        <field name="name">analysis.lims.tree</field>
-        <field name="model">analysis.lims</field>
+    <record id="quality_check_tree" model="ir.ui.view">
+        <field name="name">quality.check.tree</field>
+        <field name="model">quality.check</field>
         <field name="arch" type="xml">
             <form>
                 <tree>
                     <field name="name" />
+                    <field name="analysis_ids" />
                 </tree>
             </form>
         </field>
     </record>
 
-    <record id="action_lims_analysis" model="ir.actions.act_window">
-        <field name="name">Analysis Lims</field>
+    <record id="action_lims_quality_check" model="ir.actions.act_window">
+        <field name="name">Quality Check</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">analysis.lims</field>
+        <field name="res_model">quality.check</field>
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
         <field name="context">{'module' : 'lims'}</field>
     </record>
     <menuitem
-        id="menu_lims_analysis"
-        name="Analysis Lims"
+        id="menu_quality_check"
+        name="Quality Check"
         parent="cat_menu_lims_config"
         sequence="0"
-        action="action_lims_analysis"
+        action="action_lims_quality_check"
         groups="base.group_system"
     />
 </odoo>
