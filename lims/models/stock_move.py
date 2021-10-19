@@ -28,6 +28,6 @@ class StockMove(models.Model):
             "lims.analysis_new_action"
         )
         action["context"] = {
-            "move_id": self.id,
+            "stock_move_id": self.id,
         }
         return action

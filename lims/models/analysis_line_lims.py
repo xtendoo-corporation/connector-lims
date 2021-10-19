@@ -12,6 +12,12 @@ class AnalysisLineLims(models.Model):
 
         return self.env["ir.sequence"].next_by_code("analysis.code") or "New"
 
+    def _compute_stock_move_id(self):
+        if self.env.context.get("stock_move_id"):
+            return self.env.context.get("stock_move_id")
+        else:
+            return
+
     name = fields.Char(string="Name", store=True, readonly="1")
 
     analysis_id = fields.Many2one(
@@ -21,8 +27,7 @@ class AnalysisLineLims(models.Model):
     )
 
     stock_move_id = fields.Many2one(
-        "stock.line",
-        "Stock Move",
+        "stock.move", "Stock Move", compute="_compute_stock_move_id", store=True
     )
 
     priority = fields.Selection(
