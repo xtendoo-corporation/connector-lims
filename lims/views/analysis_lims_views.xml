@@ -37,6 +37,7 @@
         <field name="target">current</field>
         <field name="context">{'module' : 'lims'}</field>
     </record>
+
     <menuitem
         id="menu_lims_analysis"
         name="Analysis Lims"

@@ -4,8 +4,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-
-
     <record id="analysis_line_lims_form" model="ir.ui.view">
         <field name="name">analysis.line.lims.form</field>
         <field name="model">analysis.line.lims</field>
@@ -13,10 +11,27 @@
             <form>
                 <label for="name" />
                 <field name="name" />
-                <label for="analysis_id" />
-                <field name="analysis_id" />
-                <label for="stock_move_line_id" />
-                <field name="stock_move_line_id" />
+                    <group name="Sample Information" string="Sample Information">
+                        <field name="analysis_id" />
+                        <field name="stock_move_id" />
+                        <field name="description" />
+                        <field name="lot_id" />
+                        <!--<field name="regulation"></field>-->
+                    </group>
+                    <group name="General Information" string="General Information">
+                        <field name="laboratory_id" />
+                        <field name="customer_id" />
+                        <field name="customer_contact_id" />
+                        <field name="reason" />
+                        <field name="reference" />
+                        <!--<field name="active"></field>-->
+                        <!--<field name="tag_ids"></field>-->
+                        <field name="date_plan" />
+                        <field name="date_due" />
+                        <field name="date_sample" />
+                        <field name="date_sample_begin" />
+                        <!--<field name="sampler" />-->
+                    </group>
             </form>
         </field>
     </record>
@@ -29,7 +44,7 @@
                 <tree>
                     <field name="name" />
                     <field name="analysis_id" />
-                    <field name="stock_move_line_id" />
+                    <field name="stock_move_id" />
                 </tree>
             </form>
         </field>
@@ -51,4 +66,24 @@
         action="action_lims_analysis_line"
         groups="base.group_system"
     />
+
+    <!--Secuence-->
+    <record id="sequence_analysis_line_lims" model="ir.sequence">
+        <field name="name">Secuencia de analisis</field>
+        <field name="code">analysis.line.lims.code</field>
+        <field name="active">True</field>
+        <field name="prefix">Analisis-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- Action -->
+    <record id="analysis_new_action" model="ir.actions.act_window">
+        <field name="name">Analysis</field>
+        <field name="res_model">analysis.line.lims</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module' : 'lims'}</field>
+    </record>
 </odoo>

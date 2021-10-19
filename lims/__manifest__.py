@@ -25,6 +25,7 @@
         "views/analysis_line_lims_views.xml",
         "views/quality_check_views.xml",
         "views/analysis_lims_views.xml",
+        "views/stock_picking_view.xml",
     ],
     "images": ["static/description/banner.png"],
     "application": True,

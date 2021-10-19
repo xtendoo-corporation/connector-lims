@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="stock_picking_view_lims_form" model="ir.ui.view">
+        <field name="name">stock.picking.view.lims.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//page[@name='operations']/field[@name='move_ids_without_package']/tree/field[@name='quantity_done']"
+                position="after"
+            >
+                <field name="is_product_sample" invisible="1" />
+                <button
+                    class="btn btn-success"
+                    type="object"
+                    name="create_new_analysis"
+                    string="Create Analysis"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
