@@ -15,6 +15,7 @@
                     type="object"
                     name="create_new_analysis"
                     string="Create Analysis"
+                    attrs="{'invisible':[('is_product_sample', '!=', True)]}"
                 />
             </xpath>
         </field>
