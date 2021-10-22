@@ -26,6 +26,7 @@
         "views/quality_check_views.xml",
         "views/analysis_lims_views.xml",
         "views/stock_picking_view.xml",
+        "views/res_partner.xml",
     ],
     "images": ["static/description/banner.png"],
     "application": True,

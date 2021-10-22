@@ -14,12 +14,16 @@
                     <group name="Sample Information" string="Sample Information">
                         <field name="analysis_id" />
                         <field name="stock_move_id" />
+                        <field
+                        name="product_id"
+                        domain="[('is_product_sample', '=', True)]"
+                    />
                         <field name="description" />
                         <field name="lot_id" />
                         <!--<field name="regulation"></field>-->
                     </group>
                     <group name="General Information" string="General Information">
-                        <field name="laboratory_id" />
+                        <field name="laboratory_id" domain="[('is_lab', '=', True)]" />
                         <field name="customer_id" />
                         <field name="customer_contact_id" />
                         <field name="reason" />
@@ -30,7 +34,7 @@
                         <field name="date_due" />
                         <field name="date_sample" />
                         <field name="date_sample_begin" />
-                        <!--<field name="sampler" />-->
+                        <field name="sampler" />
                     </group>
             </form>
         </field>
@@ -84,6 +88,15 @@
         <field name="res_model">analysis.line.lims</field>
         <field name="view_mode">form</field>
         <field name="target">current</field>
+    </record>
+
+    <record id="action_view_analysis" model="ir.actions.act_window">
+        <field name="name">Analysis Line Lims</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">analysis.line.lims</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
         <field name="context">{'module' : 'lims'}</field>
+
     </record>
 </odoo>

@@ -6,3 +6,5 @@ from . import analysis_line_lims
 from . import analysis_lims
 from . import quality_check
 from . import stock_move
+from . import res_partner
+from . import stock_picking

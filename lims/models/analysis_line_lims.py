@@ -8,16 +8,6 @@ class AnalysisLineLims(models.Model):
     _name = "analysis.line.lims"
     _description = "Analysis Line LIMS"
 
-    def _compute_name(self):
-
-        return self.env["ir.sequence"].next_by_code("analysis.code") or "New"
-
-    def _compute_stock_move_id(self):
-        if self.env.context.get("stock_move_id"):
-            return self.env.context.get("stock_move_id")
-        else:
-            return
-
     name = fields.Char(string="Name", store=True, readonly="1")
 
     analysis_id = fields.Many2one(
@@ -27,7 +17,15 @@ class AnalysisLineLims(models.Model):
     )
 
     stock_move_id = fields.Many2one(
-        "stock.move", "Stock Move", compute="_compute_stock_move_id", store=True
+        "stock.move",
+        "Stock Move",
+        default=lambda self: self.env.context.get("stock_move_id"),
+    )
+
+    product_id = fields.Many2one(
+        "product.template",
+        "Products",
+        default=lambda self: self.env.context.get("product_id"),
     )
 
     priority = fields.Selection(
@@ -54,6 +52,7 @@ class AnalysisLineLims(models.Model):
     lot_id = fields.Many2one(
         comodel_name="stock.production.lot",
         string="Lot",
+        default=lambda self: self.env.context.get("lot_id"),
     )
     # Campo matrix indicara el conjunto de test al que pertenede
     # Matrix
@@ -72,11 +71,13 @@ class AnalysisLineLims(models.Model):
     customer_id = fields.Many2one(
         comodel_name="res.partner",
         string="Customer",
+        default=lambda self: self.env.context.get("customer_id"),
     )
 
     customer_contact_id = fields.Many2one(
         comodel_name="res.partner",
         string="Customer contact",
+        default=lambda self: self.env.context.get("customer_id"),
     )
 
     reason = fields.Char(string="Reason", store=True)
@@ -97,11 +98,12 @@ class AnalysisLineLims(models.Model):
     date_sample = fields.Date(string="Date sample")
     date_sample_receipt = fields.Date(string="Date sample receipt")
     date_sample_begin = fields.Date(string="Date sample begin")
-    # Poner deffault el user_id activo
-    # sampler = fields.Many2one(
-    #    comodel_name="res.user",
-    #    string="Sampler",
-    # )
+
+    sampler = fields.Many2one(
+        comodel_name="res.users",
+        string="Sampler",
+        default=lambda self: self.env.user.id,
+    )
 
     @api.model
     def create(self, vals):

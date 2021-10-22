@@ -5,19 +5,36 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
+           <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="action_view_analysis"
+                    type="object"
+                    icon="fa-flask"
+                    attrs="{'invisible': [('analysis_count', '=', 0)]}"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field
+                                name="analysis_count"
+                            /></span>
+                        <span class="o_stat_text">Analysis</span>
+                    </div>
+                </button>
+            </xpath>
             <xpath
                 expr="//page[@name='operations']/field[@name='move_ids_without_package']/tree/field[@name='quantity_done']"
                 position="after"
             >
                 <field name="is_product_sample" invisible="1" />
                 <button
-                    class="btn btn-success"
+                    class="btn btn-link"
                     type="object"
                     name="create_new_analysis"
-                    string="Create Analysis"
+                    icon="fa-flask"
                     attrs="{'invisible':[('is_product_sample', '!=', True)]}"
                 />
             </xpath>
         </field>
     </record>
+
 </odoo>
