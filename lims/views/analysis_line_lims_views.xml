@@ -9,33 +9,90 @@
         <field name="model">analysis.line.lims</field>
         <field name="arch" type="xml">
             <form>
-                <label for="name" />
-                <field name="name" />
-                    <group name="Sample Information" string="Sample Information">
-                        <field name="analysis_id" />
-                        <field name="stock_move_id" />
-                        <field
-                        name="product_id"
-                        domain="[('is_product_sample', '=', True)]"
+
+                    <header>
+                        <button
+                        name="action_confirm"
+                        type="object"
+                        string="Confirm"
+                        attrs="{'invisible': [('state', '!=', 'draft')]}"
                     />
-                        <field name="description" />
-                        <field name="lot_id" />
-                        <!--<field name="regulation"></field>-->
-                    </group>
-                    <group name="General Information" string="General Information">
-                        <field name="laboratory_id" domain="[('is_lab', '=', True)]" />
-                        <field name="customer_id" />
-                        <field name="customer_contact_id" />
-                        <field name="reason" />
-                        <field name="reference" />
-                        <!--<field name="active"></field>-->
-                        <!--<field name="tag_ids"></field>-->
-                        <field name="date_plan" />
-                        <field name="date_due" />
-                        <field name="date_sample" />
-                        <field name="date_sample_begin" />
-                        <field name="sampler" />
-                    </group>
+                        <button
+                        name="action_draft"
+                        type="object"
+                        string="Draft"
+                        attrs="{'invisible': [('state', 'not in', ['to-do','cancel'])]}"
+                    />
+                        <button
+                        name="action_cancel"
+                        type="object"
+                        string="Cancel"
+                        attrs="{'invisible': [('state', 'in', ['draft', 'done','cancel'])]}"
+                    />
+                        <button
+                        name="action_analysis"
+                        type="object"
+                        string="Analysis"
+                        attrs="{'invisible': [('state', '!=', 'to-do')]}"
+                    />
+                        <field
+                        name="state"
+                        widget="statusbar"
+                        options="{'fold_field': 'fold'}"
+                    />
+                    </header>
+                <sheet name="Analysis">
+                    <field name="active" invisible="1" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <field
+                        name="result"
+                        style="width:5%;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;"
+                        class="ml-6 float-right"
+                        widget="label_selection"
+                        options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
+                    />
+                    <label for="name" />
+
+                    <field name="name" />
+                        <group name="Sample Information" string="Sample Information">
+                            <field name="analysis_id" />
+                            <field name="stock_move_id" />
+                            <field
+                            name="product_id"
+                            domain="[('is_product_sample', '=', True)]"
+                        />
+                            <field name="description" />
+                            <field name="lot_id" />
+                            <field
+                            name="priority"
+                            class="oe_inline"
+                            widget="priority"
+                        />
+                            <!--<field name="regulation"></field>-->
+                        </group>
+                        <group name="General Information" string="General Information">
+                            <field
+                            name="laboratory_id"
+                            domain="[('is_lab', '=', True)]"
+                        />
+                            <field name="customer_id" />
+                            <field name="customer_contact_id" />
+                            <field name="reason" />
+                            <field name="reference" />
+                            <!--<field name="active"></field>-->
+                            <!--<field name="tag_ids"></field>-->
+                            <field name="date_plan" />
+                            <field name="date_due" />
+                            <field name="date_sample" />
+                            <field name="date_sample_begin" />
+                            <field name="sampler" />
+                        </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -43,14 +100,20 @@
     <record id="analysis_line_lims_tree" model="ir.ui.view">
         <field name="name">analysis.line.lims.tree</field>
         <field name="model">analysis.line.lims</field>
+        <field name="type">tree</field>
         <field name="arch" type="xml">
-            <form>
                 <tree>
                     <field name="name" />
-                    <field name="analysis_id" />
-                    <field name="stock_move_id" />
+                    <field name="state" />
+                   <!--<field name="result" widget="state_selection" editable="1"/> -->
+                    <field
+                    name="result"
+                    style="width:15%;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;"
+                    class="ml-6"
+                    widget="label_selection"
+                    options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
+                />
                 </tree>
-            </form>
         </field>
     </record>
 

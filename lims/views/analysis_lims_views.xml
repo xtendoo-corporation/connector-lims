@@ -20,6 +20,7 @@
     <record id="analysis_lims_tree" model="ir.ui.view">
         <field name="name">analysis.lims.tree</field>
         <field name="model">analysis.lims</field>
+        <field name="type">tree</field>
         <field name="arch" type="xml">
             <form>
                 <tree>

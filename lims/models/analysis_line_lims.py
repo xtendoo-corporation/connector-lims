@@ -1,7 +1,8 @@
 # Copyright 2021 - Daniel Domínguez https://xtendoo.es/
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class AnalysisLineLims(models.Model):
@@ -29,7 +30,34 @@ class AnalysisLineLims(models.Model):
     )
 
     priority = fields.Selection(
-        [("1", "Low"), ("2", "Medium"), ("3", "High")], "Priority", size=1, default="1"
+        [("0", "Normal"), ("1", "Low"), ("2", "Medium"), ("3", "High")],
+        "Priority",
+        size=1,
+        default="1",
+    )
+
+    state = fields.Selection(
+        [
+            ("cancel", "Cancel"),
+            ("draft", "Draft"),
+            ("to-do", "To-Do"),
+            ("done", "Done"),
+        ],
+        "State",
+        size=1,
+        default="draft",
+    )
+
+    result = fields.Selection(
+        [
+            ("none", "Unrealized"),
+            ("pass", "Approved"),
+            ("fail", "Failed"),
+            ("warning", "Warning"),
+        ],
+        "State",
+        size=1,
+        default="Unrealized",
     )
 
     is_duplicate = fields.Boolean(string="Is Duplicate", store=True)
@@ -84,7 +112,9 @@ class AnalysisLineLims(models.Model):
 
     reference = fields.Char(string="Reference", store=True)
 
-    is_locked = fields.Boolean(string="Active", store=True)
+    active = fields.Boolean(string="Active", store=True, default=True)
+
+    is_locked = fields.Boolean(string="Is Locked", store=True)
 
     # Ver que tags llevaran a que tabla conectarlo
     # tag_ids = fields.Many2one(
@@ -113,3 +143,36 @@ class AnalysisLineLims(models.Model):
             )
         result = super(AnalysisLineLims, self).create(vals)
         return result
+
+    def toggle_active(self):
+        res = super().toggle_active()
+        if self.filtered(lambda so: so.state not in ["draft", "cancel"]):
+            raise UserError(_("Only 'Draft' or 'Canceled' orders can be archived"))
+        return res
+
+    def action_confirm(self):
+        if self.filtered(lambda self: self.state != "draft"):
+            raise UserError(_("You can only confirm draft analysis"))
+        res = self.write({"state": "to-do"})
+        return res
+
+    def action_cancel(self):
+        if self.filtered(lambda self: self.state not in ["to-do", "draft"]):
+            raise UserError(_("You can only cancel Confirm analysis"))
+        res = self.write({"state": "cancel"})
+        return res
+
+    def action_draft(self):
+        if self.filtered(lambda self: self.state not in ["to-do", "cancel"]):
+            raise UserError(_("You can only draft Confirm analysis"))
+        res = self.write({"state": "draft"})
+        return res
+
+    def action_analysis(self):
+        if self.filtered(lambda self: self.result != "none"):
+            raise UserError(_("You can only to realize analysis Unrealized Analysis"))
+        # TO-DO: Realizar el analisis y cambiar el result.
+        analysis_result = "pass"
+
+        res = self.write({"state": "done", "result": analysis_result})
+        return res
