@@ -15,3 +15,8 @@ class AnalysisLims(models.Model):
         "Quality Check",
         invisible=True,
     )
+
+    # component_ids = fields.One2many(
+    #     "analysis.component.lims",
+    #     "analysis_ids",
+    # )

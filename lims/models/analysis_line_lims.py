@@ -55,9 +55,9 @@ class AnalysisLineLims(models.Model):
             ("fail", "Failed"),
             ("warning", "Warning"),
         ],
-        "State",
+        "Result",
         size=1,
-        default="Unrealized",
+        default="none",
     )
 
     is_duplicate = fields.Boolean(string="Is Duplicate", store=True)
