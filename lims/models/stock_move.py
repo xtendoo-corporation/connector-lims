@@ -16,7 +16,7 @@ class StockMove(models.Model):
     is_product_sample = fields.Boolean(
         "Is Product Sample",
         compute="_compute_is_product_sample",
-        Stote=True,
+        Store=True,
         readonly="1",
     )
 
