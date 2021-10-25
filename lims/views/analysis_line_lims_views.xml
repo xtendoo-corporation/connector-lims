@@ -113,6 +113,7 @@
                     widget="label_selection"
                     options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
                 />-->
+
                 </tree>
         </field>
     </record>
