@@ -15,13 +15,10 @@ class StockMove(models.Model):
 
     is_product_sample = fields.Boolean(
         "Is Product Sample",
-        compute="_compute_is_product_sample",
+        related="product_id.is_product_sample",
         store=True,
         readonly="1",
     )
-
-    def _compute_is_product_sample(self):
-        self.is_product_sample = self.product_id.is_product_sample
 
     def create_new_analysis(self):
         move_line = self._get_stock_move_line()
