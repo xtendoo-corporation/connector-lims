@@ -32,7 +32,6 @@ class AnalysisLineLims(models.Model):
     priority = fields.Selection(
         [("0", "Normal"), ("1", "Low"), ("2", "Medium"), ("3", "High")],
         "Priority",
-        size=1,
         default="1",
     )
 
@@ -44,7 +43,6 @@ class AnalysisLineLims(models.Model):
             ("done", "Done"),
         ],
         "State",
-        size=1,
         default="draft",
     )
 
@@ -56,7 +54,6 @@ class AnalysisLineLims(models.Model):
             ("warning", "Warning"),
         ],
         "Result",
-        size=1,
         default="none",
     )
 
@@ -74,7 +71,7 @@ class AnalysisLineLims(models.Model):
     out_of_time = fields.Boolean(string="Out Of Time", store=True)
 
     # Sample information
-    sample_name = fields.Char(string="Name", store=True)
+    sample_name = fields.Char(string="Sample Name", store=True)
     #
     description = fields.Char(string="Description", store=True)
     lot_id = fields.Many2one(
