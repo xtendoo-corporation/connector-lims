@@ -1,7 +1,8 @@
 # Copyright 2021 - Manuel Calero <https://xtendoo.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import _, fields, models
+from odoo.exceptions import ValidationError
 
 
 class StockMoveLine(models.Model):
@@ -19,6 +20,8 @@ class StockMoveLine(models.Model):
     )
 
     def create_new_analysis(self):
+        if self.picking_id.state != "done":
+            raise ValidationError(_("You must first validate the picking"))
         action = self.env["ir.actions.act_window"]._for_xml_id(
             "lims.analysis_new_action"
         )
