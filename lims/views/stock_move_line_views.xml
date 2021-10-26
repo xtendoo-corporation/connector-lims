@@ -20,7 +20,7 @@
                     type="object"
                     name="create_new_analysis"
                     icon="fa-flask"
-                    attrs="{'invisible':[('is_product_sample', '!=', True)]}"
+                    attrs="{'invisible':[('is_product_sample', '!=', True),('qty_done','!=', 0.00)]}"
                 />
             </xpath>
         </field>

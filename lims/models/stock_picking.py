@@ -15,13 +15,9 @@ class StockPicking(models.Model):
         for order in self:
             order.analysis_count = len(self._get_analysis())
 
-    def _get_stock_move_line(self):
-        return self.env["stock.move.line"].search([("picking_id", "=", self.id)])
-
     def _get_analysis(self):
-        lines = self._get_stock_move_line()
         return self.env["analysis.line.lims"].search(
-            [("stock_move_line_id", "=", lines.id)]
+            [("stock_move_line_id", "in", (self.move_line_nosuggest_ids.ids))]
         )
 
     def action_view_analysis(self):
