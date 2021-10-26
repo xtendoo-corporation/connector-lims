@@ -6,9 +6,9 @@ from odoo import _, fields, models
 
 class StockPicking(models.Model):
     _inherit = "stock.picking"
-
     analysis_count = fields.Integer(
-        "Number of Analysis Generated", compute="_compute_analysis_count"
+        "Number of Analysis Generated",
+        compute="_compute_analysis_count",
     )
 
     def _compute_analysis_count(self):
@@ -19,8 +19,10 @@ class StockPicking(models.Model):
         return self.env["stock.move.line"].search([("picking_id", "=", self.id)])
 
     def _get_analysis(self):
-        lines = self._get_stock_move_line().move_id
-        return self.env["analysis.line.lims"].search([("stock_move_id", "=", lines.id)])
+        lines = self._get_stock_move_line()
+        return self.env["analysis.line.lims"].search(
+            [("stock_move_line_id", "=", lines.id)]
+        )
 
     def action_view_analysis(self):
         self.ensure_one()

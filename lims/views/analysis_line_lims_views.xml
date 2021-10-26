@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 # Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# Copyright 2021 - Daniel Domínguez <https://xtendoo.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
@@ -61,7 +62,7 @@
                     <field name="name" />
                         <group name="Sample Information" string="Sample Information">
                             <field name="analysis_id" />
-                            <field name="stock_move_id" />
+                            <field name="stock_move_line_id" />
                             <field
                             name="product_id"
                             domain="[('is_product_sample', '=', True)]"
@@ -105,8 +106,7 @@
                 <tree>
                     <field name="name" />
                     <field name="state" />
-                   <!--<field name="result" widget="state_selection" editable="1"/> -->
-                   <!-- <field
+                   <!--<field
                     name="result"
                     style="width:15%;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;"
                     class="ml-6"

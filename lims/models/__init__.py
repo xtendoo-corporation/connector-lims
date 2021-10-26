@@ -5,6 +5,6 @@ from . import sale_order
 from . import analysis_line_lims
 from . import analysis_lims
 from . import quality_check
-from . import stock_move
+from . import stock_move_line
 from . import res_partner
 from . import stock_picking
