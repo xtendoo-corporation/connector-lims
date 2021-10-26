@@ -23,11 +23,9 @@
         <field name="model">analysis.lims</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
-            <form>
                 <tree>
                     <field name="name" />
                 </tree>
-            </form>
         </field>
     </record>
 
