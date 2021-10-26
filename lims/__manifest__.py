@@ -18,10 +18,10 @@
     "data": [
         "security/ir.model.access.csv",
         "views/product_template_view.xml",
-        "views/analysis_line_lims_views.xml",
         "views/stock_move_line_views.xml",
         "views/menu.xml",
         "views/analysis_lims_views.xml",
+        "views/analysis_line_lims_views.xml",
         "views/res_config_settings.xml",
         "views/quality_check_views.xml",
         "views/stock_picking_view.xml",
