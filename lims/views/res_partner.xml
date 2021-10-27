@@ -25,4 +25,34 @@
             </xpath>
         </field>
     </record>
+
+    <record id="action_contacts_lab" model="ir.actions.act_window">
+        <field name="name">Laboratories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter" />
+        <field name="context">{'search_default_partner_lab': 1}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a laboratory in your address book
+          </p>
+        </field>
+    </record>
+
+    <record id="res_partner_view_search_lims" model="ir.ui.view">
+        <field name="name">lims.partner.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="before">
+                <filter
+                    string="Laboratories"
+                    name="partner_lab"
+                    domain="[('is_lab', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

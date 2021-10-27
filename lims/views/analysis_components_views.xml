@@ -6,7 +6,6 @@
 -->
 <odoo>
 
-
     <record id="analysis_components_form" model="ir.ui.view">
         <field name="name">analysis.components.form</field>
         <field name="model">analysis.component.lims</field>
@@ -32,15 +31,16 @@
         <field name="model">analysis.component.lims</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
-                 <tree editable="bottom">
-                    <field name="parameter" />
-                    <field name="comparator" widget="selection" />
-                    <field name="min_value" />
-                    <field name="max_value" />
-                </tree>
+            <tree editable="bottom">
+                <field name="parameter" />
+                <field name="comparator" widget="selection" />
+                <field name="min_value" />
+                <field name="max_value" />
+            </tree>
         </field>
     </record>
-     <record id="action_lims_component" model="ir.actions.act_window">
+
+    <record id="action_lims_component" model="ir.actions.act_window">
         <field name="name">Component Lims</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">analysis.component.lims</field>
