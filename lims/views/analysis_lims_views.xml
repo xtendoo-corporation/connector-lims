@@ -14,6 +14,14 @@
             <form>
                 <label for="name" />
                 <field name="name" />
+                <br />
+                <label for="description" />
+                <field name="description" widget="section_and_note_text" />
+                <notebook>
+                    <page string="Components" name="components">
+                        <field name="component_ids" widget="one2many_list" />
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>
@@ -25,6 +33,7 @@
         <field name="arch" type="xml">
                 <tree>
                     <field name="name" />
+                    <field name="component_ids" />
                 </tree>
         </field>
     </record>

@@ -8,3 +8,4 @@ from . import quality_check
 from . import stock_move_line
 from . import res_partner
 from . import stock_picking
+from . import analysis_component_lims

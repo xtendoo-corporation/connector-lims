@@ -14,6 +14,7 @@
             <form>
                 <label for="name" />
                 <field name="name" />
+                 <br />
                 <label for="analysis_ids" />
                 <field name="analysis_ids" widget="many2many_tags" />
             </form>

@@ -58,7 +58,7 @@ class StockPicking(models.Model):
                                 ]
                             ):
                                 valList = {
-                                    "laboratory_id": 1,
+                                    "product_id": line.product_id.product_tmpl_id.id,
                                     "stock_move_line_id": line.id,
                                     "analysis_id": analysis.id,
                                     "customer_id": self.partner_id.id,

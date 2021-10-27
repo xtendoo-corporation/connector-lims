@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+# Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# Copyright 2021 - Daniel Domínguez <https://xtendoo.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+
+    <record id="analysis_components_form" model="ir.ui.view">
+        <field name="name">analysis.components.form</field>
+        <field name="model">analysis.component.lims</field>
+        <field name="arch" type="xml">
+            <form>
+                <label for="parameter" />
+                <field name="parameter" />
+                <br />
+                <label for="comparator" />
+                <field name="comparator" />
+                <br />
+                <label for="min_value" />
+                <field name="min_value" />
+                <br />
+                <label for="max_value" />
+                <field name="max_value" />
+            </form>
+        </field>
+    </record>
+
+    <record id="analysis_components_tree" model="ir.ui.view">
+        <field name="name">analysis.components.tree</field>
+        <field name="model">analysis.component.lims</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+                 <tree editable="bottom">
+                    <field name="parameter" />
+                    <field name="comparator" widget="selection" />
+                    <field name="min_value" />
+                    <field name="max_value" />
+                </tree>
+        </field>
+    </record>
+</odoo>
