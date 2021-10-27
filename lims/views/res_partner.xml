@@ -11,12 +11,9 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <notebook position="inside">
-                <page name="partner_lims" groups="base.group_no_one" string="LIMS">
-                    <label for="is_lab" />
-                    <field name="is_lab" />
-                </page>
-            </notebook>
+            <xpath expr="//field[@name='vat']" position="after">
+                    <field name="is_lab" groups="base.group_no_one" />
+            </xpath>
         </field>
     </record>
 </odoo>
