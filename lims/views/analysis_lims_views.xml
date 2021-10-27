@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 # Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# Copyright 2021 - Daniel Domínguez <https://xtendoo.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
@@ -22,11 +23,9 @@
         <field name="model">analysis.lims</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
-            <form>
                 <tree>
                     <field name="name" />
                 </tree>
-            </form>
         </field>
     </record>
 

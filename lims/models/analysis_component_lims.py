@@ -7,13 +7,11 @@ from odoo import fields, models
 class AnalysisComponentLims(models.Model):
     _name = "analysis.component.lims"
     _description = "Analysis Component LIMS"
-
     # analysis_ids = fields.Many2one(
     #     "analysis.lims",
     #     "Analysis lims",
     #     invisible=True,
     # )
-
     parameter = fields.Char(string="Name", store=True)
     value = fields.Float(string="Value", store=True)
     comparator = fields.Char(string="Comparator", store=True)

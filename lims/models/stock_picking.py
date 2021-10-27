@@ -6,21 +6,19 @@ from odoo import _, fields, models
 
 class StockPicking(models.Model):
     _inherit = "stock.picking"
-
     analysis_count = fields.Integer(
-        "Number of Analysis Generated", compute="_compute_analysis_count"
+        "Number of Analysis Generated",
+        compute="_compute_analysis_count",
     )
 
     def _compute_analysis_count(self):
         for order in self:
             order.analysis_count = len(self._get_analysis())
 
-    def _get_stock_move_line(self):
-        return self.env["stock.move.line"].search([("picking_id", "=", self.id)])
-
     def _get_analysis(self):
-        lines = self._get_stock_move_line().move_id
-        return self.env["analysis.line.lims"].search([("stock_move_id", "=", lines.id)])
+        return self.env["analysis.line.lims"].search(
+            [("stock_move_line_id", "in", (self.move_line_nosuggest_ids.ids))]
+        )
 
     def action_view_analysis(self):
         self.ensure_one()
