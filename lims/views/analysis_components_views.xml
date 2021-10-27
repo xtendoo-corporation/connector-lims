@@ -40,4 +40,21 @@
                 </tree>
         </field>
     </record>
+     <record id="action_lims_component" model="ir.actions.act_window">
+        <field name="name">Component Lims</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">analysis.component.lims</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="context">{'module' : 'lims'}</field>
+    </record>
+
+    <menuitem
+        id="menu_lims_component"
+        name="Componenet Lims"
+        parent="lims.cat_menu_lims_config"
+        sequence="0"
+        action="action_lims_component"
+        groups="base.group_system"
+    />
 </odoo>

@@ -25,4 +25,3 @@ class AnalysisComponentLims(models.Model):
     )
     min_value = fields.Float(string="Min Value", store=True)
     max_value = fields.Float(string="Max Value", store=True)
-    value = fields.Float(string="Value", store=True)
