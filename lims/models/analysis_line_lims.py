@@ -74,7 +74,6 @@ class AnalysisLineLims(models.Model):
     laboratory_id = fields.Many2one(
         comodel_name="res.partner",
         string="Laboratory",
-        required=True,
     )
     customer_id = fields.Many2one(
         comodel_name="res.partner",

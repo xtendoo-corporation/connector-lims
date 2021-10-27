@@ -7,13 +7,22 @@ from odoo import fields, models
 class AnalysisComponentLims(models.Model):
     _name = "analysis.component.lims"
     _description = "Analysis Component LIMS"
-    # analysis_ids = fields.Many2one(
-    #     "analysis.lims",
-    #     "Analysis lims",
-    #     invisible=True,
-    # )
-    parameter = fields.Char(string="Name", store=True)
-    value = fields.Float(string="Value", store=True)
-    comparator = fields.Char(string="Comparator", store=True)
+    analysis_ids = fields.Many2one(
+        "analysis.lims",
+        "Analysis lims",
+        invisible=True,
+    )
+    parameter = fields.Char(string="Parameter", store=True)
+    comparator = fields.Selection(
+        [
+            (">", "Greater than"),
+            (">=", "Greater than or equal"),
+            ("<", "Smaller than"),
+            ("<=", "Smaller than or equal"),
+            ("=", "equal"),
+        ],
+        "Comparator",
+    )
     min_value = fields.Float(string="Min Value", store=True)
-    max_value = fields.Float(string="Min Value", store=True)
+    max_value = fields.Float(string="Max Value", store=True)
+    value = fields.Float(string="Value", store=True)

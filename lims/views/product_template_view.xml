@@ -24,9 +24,9 @@
                     string="LIMS"
                     attrs="{'invisible': [('is_product_sample', '!=', True)]}"
                 >
-                    <label for="analysis_ids" />
+                    <label for="quality_check_ids" />
                     <field
-                        name="analysis_ids"
+                        name="quality_check_ids"
                         widget="many2many_tags"
                         groups="base.group_no_one"
                     />

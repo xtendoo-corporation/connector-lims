@@ -11,7 +11,6 @@ class QualityCheck(models.Model):
     analysis_ids = fields.One2many(
         "analysis.lims",
         "quality_check_ids",
-        invisible=True,
     )
     product_ids = fields.Many2one(
         "product.template",

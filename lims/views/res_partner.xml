@@ -10,7 +10,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <field name="name" position="after">
+            <xpath expr="//h1" position="after">
                 <div
                     class="o_row"
                     attrs="{'invisible': ['|',('is_company','=',False),('parent_id','!=',False)]}"
@@ -22,7 +22,7 @@
                         </div>
                     </group>
                 </div>
-            </field>
+            </xpath>
         </field>
     </record>
 </odoo>

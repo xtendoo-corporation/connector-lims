@@ -12,7 +12,7 @@ class ProductTemplate(models.Model):
         string="Is a product sample",
         default=False,
     )
-    analysis_ids = fields.One2many(
+    quality_check_ids = fields.One2many(
         "quality.check",
         "product_ids",
         invisible=True,

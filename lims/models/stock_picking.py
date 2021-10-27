@@ -43,3 +43,27 @@ class StockPicking(models.Model):
                 }
             )
         return action
+
+    def create_all_analysis(self):
+        for line in self.move_line_nosuggest_ids:
+            if line.is_product_sample and line.product_id.quality_check_ids:
+                for quality_check in line.product_id.quality_check_ids:
+                    if quality_check.analysis_ids:
+                        for analysis in quality_check.analysis_ids:
+                            if not self.env["analysis.line.lims"].search(
+                                [
+                                    ("stock_move_line_id", "=", line.id),
+                                    ("analysis_id", "=", analysis.id),
+                                    ("lot_id", "=", line.lot_id.id),
+                                ]
+                            ):
+                                self.env["analysis.line.lims"].create(
+                                    {
+                                        "product_id": line.product_id.product_tmpl_id.id,
+                                        "stock_move_line_id": line.id,
+                                        "analysis_id": analysis.id,
+                                        "customer_id": self.partner_id.id,
+                                        "customer_contact_id": self.partner_id.id,
+                                        "lot_id": line.lot_id.id,
+                                    }
+                                )
