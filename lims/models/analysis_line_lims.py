@@ -138,8 +138,7 @@ class AnalysisLineLims(models.Model):
             vals["name"] = (
                 self.env["ir.sequence"].next_by_code("analysis.line.lims.code") or "/"
             )
-        result = super(AnalysisLineLims, self).create(vals)
-        return result
+        return super(AnalysisLineLims, self).create(vals)
 
     def toggle_active(self):
         res = super().toggle_active()
