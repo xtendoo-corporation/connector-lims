@@ -57,12 +57,13 @@ class StockPicking(models.Model):
                                     ("lot_id", "=", line.lot_id.id),
                                 ]
                             ):
-                                valList = {
-                                    "product_id": line.product_id.product_tmpl_id.id,
-                                    "stock_move_line_id": line.id,
-                                    "analysis_id": analysis.id,
-                                    "customer_id": self.partner_id.id,
-                                    "customer_contact_id": self.partner_id.id,
-                                    "lot_id": line.lot_id.id,
-                                }
-                                self.env["analysis.line.lims"].create(valList)
+                                self.env["analysis.line.lims"].create(
+                                    {
+                                        "product_id": line.product_id.product_tmpl_id.id,
+                                        "stock_move_line_id": line.id,
+                                        "analysis_id": analysis.id,
+                                        "customer_id": self.partner_id.id,
+                                        "customer_contact_id": self.partner_id.id,
+                                        "lot_id": line.lot_id.id,
+                                    }
+                                )
