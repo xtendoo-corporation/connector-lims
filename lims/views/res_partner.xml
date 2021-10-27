@@ -5,18 +5,24 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-
     <record id="re_partner_form_view" model="ir.ui.view">
         <field name="name">re.partner.form.view</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <notebook position="inside">
-                <page name="partner_lims" groups="base.group_no_one" string="LIMS">
-                    <label for="is_lab" />
-                    <field name="is_lab" />
-                </page>
-            </notebook>
+            <field name="name" position="after">
+                <div
+                    class="o_row"
+                    attrs="{'invisible': ['|',('is_company','=',False),('parent_id','!=',False)]}"
+                >
+                    <group name="is_lab">
+                        <label for="is_lab" />
+                        <div class="o_row">
+                            <field name="is_lab" />
+                        </div>
+                    </group>
+                </div>
+            </field>
         </field>
     </record>
 </odoo>

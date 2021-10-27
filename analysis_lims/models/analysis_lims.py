@@ -8,10 +8,7 @@ class AnalysisLims(models.Model):
     _name = "analysis.lims"
     _description = "Analysis LIMS"
 
-    name = fields.Char(
-        string="Name",
-        store=True
-    )
+    name = fields.Char(string="Name", store=True)
     quality_check_ids = fields.Many2one(
         "quality.checks.lims",
         "Quality Checks",

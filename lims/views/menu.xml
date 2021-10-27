@@ -19,6 +19,14 @@
         groups="base.group_system"
     />
     <menuitem
+        id="cat_menu_lims_lab"
+        name="Laboratories"
+        parent="main_menu_lims"
+        sequence="0"
+        action="action_contacts_lab"
+        groups="base.group_system"
+    />
+    <menuitem
         id="cat_menu_lims_config"
         name="Configuration"
         parent="main_menu_lims"

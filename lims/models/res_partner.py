@@ -6,7 +6,8 @@ from odoo import fields, models
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
+
     is_lab = fields.Boolean(
-        string="Is a partner LAB",
+        string="Laboratory",
         default=False,
     )
