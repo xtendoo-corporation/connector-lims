@@ -17,6 +17,10 @@ class ProductTemplate(models.Model):
         "product_ids",
         invisible=True,
     )
+    analysis_count = fields.Integer(
+        "Number of Analysis Generated",
+        compute="_compute_analysis_count",
+    )
 
     @api.constrains("is_product_sample", "type")
     def _check_is_product_sample(self):
@@ -25,3 +29,34 @@ class ProductTemplate(models.Model):
                 _("You can only create sample products if they are storable.")
             )
         self.tracking = "lot"
+
+    def _compute_analysis_count(self):
+        for order in self:
+            order.analysis_count = len(self._get_analysis())
+
+    def _get_analysis(self):
+        return self.env["analysis.line.lims"].search([("product_id", "=", (self.id))])
+
+    def action_view_analysis(self):
+        self.ensure_one()
+        analysis_line_ids = self._get_analysis().ids
+        action = {
+            "res_model": "analysis.line.lims",
+            "type": "ir.actions.act_window",
+        }
+        if len(analysis_line_ids) == 1:
+            action.update(
+                {
+                    "view_mode": "form",
+                    "res_id": analysis_line_ids[0],
+                }
+            )
+        else:
+            action.update(
+                {
+                    "name": _("Analysis from Product %s", self.name),
+                    "domain": [("id", "in", analysis_line_ids)],
+                    "view_mode": "tree,form",
+                }
+            )
+        return action
