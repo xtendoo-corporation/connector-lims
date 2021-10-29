@@ -1,5 +1,5 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_analysis_lims_user,access_analysis_lims_user,model_analysis_lims,base.group_user,1,1,1,1
-access_quality_check_user,access_quality_check_user,model_quality_check,base.group_user,1,1,1,1
-access_analysis_line_lims_user,access_analysis_line_lims_user,model_analysis_line_lims,base.group_user,1,1,1,1
-access_analysis_component_lims_user,access_analysis_component_lims_user,model_analysis_component_lims,base.group_user,1,1,1,1
+access_lims_analysis_user,access_lims_analysis_user,model_lims_analysis,base.group_user,1,1,1,1
+access_lims_analysis_group_user,access_lims_analysis_group_user,model_lims_analysis_group,base.group_user,1,1,1,1
+access_lims_analysis_line_user,access_lims_analysis_line_user,model_lims_analysis_line,base.group_user,1,1,1,1
+access_lims_analysis_component_user,access_lims_analysis_component_user,model_lims_analysis_component,base.group_user,1,1,1,1

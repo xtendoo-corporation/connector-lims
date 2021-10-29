@@ -12,8 +12,8 @@ class ProductTemplate(models.Model):
         string="Is a product sample",
         default=False,
     )
-    quality_check_ids = fields.One2many(
-        "quality.check",
+    analysis_group_ids = fields.One2many(
+        "lims.analysis.group",
         "product_ids",
         invisible=True,
     )
@@ -35,13 +35,13 @@ class ProductTemplate(models.Model):
             order.analysis_count = len(self._get_analysis())
 
     def _get_analysis(self):
-        return self.env["analysis.line.lims"].search([("product_id", "=", (self.id))])
+        return self.env["lims.analysis.line"].search([("product_id", "=", (self.id))])
 
     def action_view_analysis(self):
         self.ensure_one()
         analysis_line_ids = self._get_analysis().ids
         action = {
-            "res_model": "analysis.line.lims",
+            "res_model": "lims.analysis.line",
             "type": "ir.actions.act_window",
         }
         if len(analysis_line_ids) == 1:

@@ -8,11 +8,11 @@
 
     <record id="analysis_components_form" model="ir.ui.view">
         <field name="name">analysis.components.form</field>
-        <field name="model">analysis.component.lims</field>
+        <field name="model">lims.analysis.component</field>
         <field name="arch" type="xml">
             <form>
-                <label for="parameter" />
-                <field name="parameter" />
+                <label for="name" />
+                <field name="name" />
                 <br />
                 <label for="comparator" />
                 <field name="comparator" />
@@ -27,12 +27,12 @@
     </record>
 
     <record id="analysis_components_tree" model="ir.ui.view">
-        <field name="name">analysis.components.tree</field>
-        <field name="model">analysis.component.lims</field>
+        <field name="name">analysis.component.tree</field>
+        <field name="model">lims.analysis.component</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree editable="bottom">
-                <field name="parameter" />
+                <field name="name" />
                 <field name="comparator" widget="selection" />
                 <field name="min_value" />
                 <field name="max_value" />
@@ -43,7 +43,7 @@
     <record id="action_lims_component" model="ir.actions.act_window">
         <field name="name">Component Lims</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">analysis.component.lims</field>
+        <field name="res_model">lims.analysis.component</field>
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
         <field name="context">{'module' : 'lims'}</field>

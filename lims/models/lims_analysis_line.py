@@ -5,12 +5,12 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class AnalysisLineLims(models.Model):
-    _name = "analysis.line.lims"
+class LimsAnalysisLine(models.Model):
+    _name = "lims.analysis.line"
     _description = "Analysis Line LIMS"
     name = fields.Char(string="Name", store=True, readonly="1")
     analysis_id = fields.Many2one(
-        "analysis.lims",
+        "lims.analysis",
         "Analysis",
         invisible=True,
     )
@@ -112,7 +112,7 @@ class AnalysisLineLims(models.Model):
             vals["name"] = (
                 self.env["ir.sequence"].next_by_code("analysis.line.lims.code") or "/"
             )
-        return super(AnalysisLineLims, self).create(vals)
+        return super(LimsAnalysisLine, self).create(vals)
 
     def toggle_active(self):
         res = super().toggle_active()

@@ -4,13 +4,13 @@
 from odoo import fields, models
 
 
-class QualityCheck(models.Model):
-    _name = "quality.check"
+class LimsAnalysisGroup(models.Model):
+    _name = "lims.analysis.group"
     _description = "Quality Check"
     name = fields.Char(string="Name", store=True)
     analysis_ids = fields.One2many(
-        "analysis.lims",
-        "quality_check_ids",
+        "lims.analysis",
+        "analysis_group_ids",
     )
     product_ids = fields.Many2one(
         "product.template",

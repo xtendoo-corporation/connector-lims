@@ -8,7 +8,7 @@ from odoo.exceptions import ValidationError
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
     analysis_ids = fields.One2many(
-        "analysis.line.lims",
+        "lims.analysis.line",
         "stock_move_line_id",
         invisible=True,
     )

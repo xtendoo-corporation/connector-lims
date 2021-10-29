@@ -4,17 +4,17 @@
 from odoo import fields, models
 
 
-class AnalysisLims(models.Model):
-    _name = "analysis.lims"
+class LimsAnalysis(models.Model):
+    _name = "lims.analysis"
     _description = "Analysis LIMS"
     name = fields.Char(string="Name", store=True)
     description = fields.Char(string="Description", store=True)
-    quality_check_ids = fields.Many2one(
-        "quality.check",
-        "Quality Check",
+    analysis_group_ids = fields.Many2one(
+        "lims.analysis.group",
+        "Analysis Group",
         invisible=True,
     )
     component_ids = fields.One2many(
-        "analysis.component.lims",
+        "lims.analysis.component",
         "analysis_ids",
     )

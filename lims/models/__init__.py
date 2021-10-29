@@ -2,10 +2,10 @@
 
 from . import product_template
 from . import sale_order
-from . import analysis_line_lims
-from . import analysis_lims
-from . import quality_check
+from . import lims_analysis_line
+from . import lims_analysis
+from . import lims_analysis_group
 from . import stock_move_line
 from . import res_partner
 from . import stock_picking
-from . import analysis_component_lims
+from . import lims_analysis_component

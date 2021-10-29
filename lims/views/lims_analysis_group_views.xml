@@ -7,9 +7,9 @@
 <odoo>
 
 
-    <record id="quality_check_form" model="ir.ui.view">
-        <field name="name">quality.check.form</field>
-        <field name="model">quality.check</field>
+    <record id="lims_analysis_group_form" model="ir.ui.view">
+        <field name="name">lims.analysis.group.form</field>
+        <field name="model">lims.analysis.group</field>
         <field name="arch" type="xml">
             <form>
                 <label for="name" />
@@ -21,9 +21,9 @@
         </field>
     </record>
 
-    <record id="quality_check_tree" model="ir.ui.view">
-        <field name="name">quality.check.tree</field>
-        <field name="model">quality.check</field>
+    <record id="lims_analysis_group_tree" model="ir.ui.view">
+        <field name="name">lims.analysis.group.tree</field>
+        <field name="model">lims.analysis.group</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
@@ -32,20 +32,20 @@
         </field>
     </record>
 
-    <record id="action_lims_quality_check" model="ir.actions.act_window">
-        <field name="name">Quality Check</field>
+    <record id="action_lims_analysis_group" model="ir.actions.act_window">
+        <field name="name">Analysis Group</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">quality.check</field>
+        <field name="res_model">lims.analysis.group</field>
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
         <field name="context">{'module' : 'lims'}</field>
     </record>
     <menuitem
-        id="menu_quality_check"
-        name="Quality Check"
+        id="menu_lims_analysis_group"
+        name="Analysis Group"
         parent="cat_menu_lims_config"
         sequence="0"
-        action="action_lims_quality_check"
+        action="action_lims_analysis_group"
         groups="base.group_system"
     />
 </odoo>

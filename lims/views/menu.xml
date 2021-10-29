@@ -38,21 +38,4 @@
         parent="cat_menu_lims_config"
         sequence="5"
     />
-
-<!--    <record id="action_product_product_sample" model="ir.actions.act_window">-->
-<!--        <field name="name">General Settings</field>-->
-<!--        <field name="type">ir.actions.act_window</field>-->
-<!--        <field name="res_model">res.config.settings</field>-->
-<!--        <field name="view_mode">form</field>-->
-<!--        <field name="target">inline</field>-->
-<!--        <field name="context">{'module' : 'lims'}</field>-->
-<!--    </record>-->
-
-    <!--    <menuitem-->
-<!--        id="cat_menu_lims_config_system"-->
-<!--        name="System"-->
-<!--        groups="lims.group_lims_manager"-->
-<!--        parent="cat_menu_lims_config"-->
-<!--        sequence="25"-->
-<!--    />-->
 </odoo>

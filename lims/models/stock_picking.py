@@ -16,7 +16,7 @@ class StockPicking(models.Model):
             order.analysis_count = len(self._get_analysis())
 
     def _get_analysis(self):
-        return self.env["analysis.line.lims"].search(
+        return self.env["lims.analysis.line"].search(
             [("stock_move_line_id", "in", (self.move_line_nosuggest_ids.ids))]
         )
 
@@ -24,7 +24,7 @@ class StockPicking(models.Model):
         self.ensure_one()
         analysis_line_ids = self._get_analysis().ids
         action = {
-            "res_model": "analysis.line.lims",
+            "res_model": "lims.analysis.line",
             "type": "ir.actions.act_window",
         }
         if len(analysis_line_ids) == 1:
@@ -46,18 +46,18 @@ class StockPicking(models.Model):
 
     def create_all_analysis(self):
         for line in self.move_line_nosuggest_ids:
-            if line.is_product_sample and line.product_id.quality_check_ids:
-                for quality_check in line.product_id.quality_check_ids:
-                    if quality_check.analysis_ids:
-                        for analysis in quality_check.analysis_ids:
-                            if not self.env["analysis.line.lims"].search(
+            if line.is_product_sample and line.product_id.analysis_group_ids:
+                for analysis_group in line.product_id.analysis_group_ids:
+                    if analysis_group.analysis_ids:
+                        for analysis in analysis_group.analysis_ids:
+                            if not self.env["lims.analysis.line"].search(
                                 [
                                     ("stock_move_line_id", "=", line.id),
                                     ("analysis_id", "=", analysis.id),
                                     ("lot_id", "=", line.lot_id.id),
                                 ]
                             ):
-                                self.env["analysis.line.lims"].create(
+                                self.env["lims.analysis.line"].create(
                                     {
                                         "product_id": line.product_id.product_tmpl_id.id,
                                         "stock_move_line_id": line.id,

@@ -4,15 +4,15 @@
 from odoo import fields, models
 
 
-class AnalysisComponentLims(models.Model):
-    _name = "analysis.component.lims"
-    _description = "Analysis Component LIMS"
+class LimsAnalysisComponent(models.Model):
+    _name = "lims.analysis.component"
+    _description = "Component LIMS"
     analysis_ids = fields.Many2one(
-        "analysis.lims",
+        "lims.analysis",
         "Analysis lims",
         invisible=True,
     )
-    parameter = fields.Char(string="Parameter", store=True)
+    name = fields.Char(string="Name", store=True)
     comparator = fields.Selection(
         [
             (">", "Greater than"),

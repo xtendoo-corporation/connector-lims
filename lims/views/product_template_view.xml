@@ -40,9 +40,9 @@
                     string="LIMS"
                     attrs="{'invisible': [('is_product_sample', '!=', True)]}"
                 >
-                    <label for="quality_check_ids" />
+                    <label for="analysis_group_ids" />
                     <field
-                        name="quality_check_ids"
+                        name="analysis_group_ids"
                         widget="many2many_tags"
                         groups="base.group_no_one"
                     />
