@@ -22,6 +22,7 @@
         "views/res_partner.xml",
         "views/menu.xml",
         "views/lims_analysis_component_views.xml",
+        "views/lims_analysis_component_limit_result_views.xml",
         "views/lims_analysis_views.xml",
         "views/lims_analysis_line_views.xml",
         "views/res_config_settings.xml",

@@ -109,13 +109,12 @@
                     <field name="lot_id" />
                     <field name="analysis_id" />
                     <field name="state" />
-                   <!--<field
-                        name="result"
-                        style="width:110px;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;"
-                        class="ml-6"
-                        widget="label_selection"
-                        options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
-                    /> -->
+                    <field
+                    name="result"
+                    class="w-50 text-center text-uppercase font-weight-bolder"
+                    widget="label_selection"
+                    options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
+                />
                 </tree>
         </field>
     </record>

@@ -10,18 +10,10 @@ class LimsAnalysisComponent(models.Model):
     analysis_ids = fields.Many2one(
         "lims.analysis",
         "Analysis lims",
-        invisible=True,
     )
     name = fields.Char(string="Name", store=True)
-    comparator = fields.Selection(
-        [
-            (">", "Greater than"),
-            (">=", "Greater than or equal"),
-            ("<", "Smaller than"),
-            ("<=", "Smaller than or equal"),
-            ("=", "equal"),
-        ],
-        "Comparator",
+
+    component_limit_result_ids = fields.One2many(
+        "lims.analysis.component.limit.result",
+        "component_ids",
     )
-    min_value = fields.Float(string="Min Value", store=True)
-    max_value = fields.Float(string="Max Value", store=True)

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+# Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# Copyright 2021 - Daniel Domínguez <https://xtendoo.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="analysis_component_form" model="ir.ui.view">
+        <field name="name">analysis.component.limit.result.form</field>
+        <field name="model">lims.analysis.component.limit.result</field>
+        <field name="arch" type="xml">
+            <form>
+                <label for="component_ids" />
+                <field name="component_ids" />
+                <br />
+            </form>
+        </field>
+    </record>
+
+    <record id="analysis_components_tree" model="ir.ui.view">
+        <field name="name">analysis.components.limit.result.tree</field>
+        <field name="model">lims.analysis.component.limit.result</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="operator_from" />
+                <field name="limit_value_from" />
+                <field name="operator_to" />
+                <field name="limit_value_to" />
+                <field name="type" />
+                <field name="state" widget="selection" />
+                <field name="message" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

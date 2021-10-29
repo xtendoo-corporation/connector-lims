@@ -9,3 +9,4 @@ from . import stock_move_line
 from . import res_partner
 from . import stock_picking
 from . import lims_analysis_component
+from . import lims_analysis_component_limit_result
