@@ -17,7 +17,8 @@ class LimsAnalysisNumericalResult(models.Model):
         "Analysis lims Component",
     )
     value = fields.Float(string="Value", store=True)
-    component_uom = fields.Many2one("uom.uom", "Unit of Measure", readonly=True)
+
+    component_uom = fields.Many2one(related="component_ids.component_uom", store=True)
     limit_value = fields.Float(string="Limit Value", store=True)
     between_limit_value = fields.Char(string="Between Limit Value", store=True)
     is_null = fields.Boolean(string="Is Null", store=True)

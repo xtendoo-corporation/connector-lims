@@ -16,6 +16,9 @@
                 <br />
                 <label for="name" />
                 <field name="name" />
+                 <br />
+                 <label for="component_uom" />
+                <field name="component_uom" />
                 <br />
                  <notebook>
                     <page string="Limit Results" name="limit_results">

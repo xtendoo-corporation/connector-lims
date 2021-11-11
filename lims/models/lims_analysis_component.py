@@ -17,6 +17,7 @@ class LimsAnalysisComponent(models.Model):
         "lims.analysis.component.limit.result",
         "component_ids",
     )
+    component_uom = fields.Many2one("uom.uom", "Unit of Measure")
 
     def _get_limit_value(self):
         limit_result = 0.00
