@@ -29,6 +29,7 @@
                 <field name="value" />
                 <field name="component_uom" />
                 <field name="limit_value" />
+                <field name="between_limit_value" />
                 <field name="is_null" />
                 <field name="corrected_value" />
                 <field name="loq" />

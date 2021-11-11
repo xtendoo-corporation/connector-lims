@@ -127,7 +127,8 @@ class LimsAnalysisLine(models.Model):
                     {
                         "analysis_ids": result.id,
                         "component_ids": component.id,
-                        "limit_value": 5.0,
+                        "limit_value": component._get_limit_value(),
+                        "between_limit_value": component._get_between_limit_value(),
                     }
                 )
 

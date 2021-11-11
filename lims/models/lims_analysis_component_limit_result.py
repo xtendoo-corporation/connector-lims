@@ -33,7 +33,7 @@ class LimsAnalysisComponentLimitResult(models.Model):
         ],
         "Operator From",
     )
-    limit_value_to = fields.Float(string="Limit Value From", store=True)
+    limit_value_to = fields.Float(string="Limit Value to", store=True)
     type = fields.Char(string="Type", store=True)
     state = fields.Selection(
         [
