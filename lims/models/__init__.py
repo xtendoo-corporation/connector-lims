@@ -10,3 +10,4 @@ from . import res_partner
 from . import stock_picking
 from . import lims_analysis_component
 from . import lims_analysis_component_limit_result
+from . import lims_analysis_numerical_result

@@ -14,6 +14,10 @@ class LimsAnalysisLine(models.Model):
         "Analysis",
         invisible=True,
     )
+    numerical_result = fields.One2many(
+        "lims.analysis.numerical.result",
+        "analysis_ids",
+    )
     stock_move_line_id = fields.Many2one(
         "stock.move.line",
         "Stock Line Move",

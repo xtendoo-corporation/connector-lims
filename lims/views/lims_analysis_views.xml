@@ -19,7 +19,11 @@
                 <field name="description" widget="section_and_note_text" />
                 <notebook>
                     <page string="Components" name="components">
-                        <field name="component_ids" widget="one2many_list" />
+                        <field
+                            name="component_ids"
+                            widget="one2many_list"
+                            editable="bottom"
+                        />
                     </page>
                 </notebook>
             </form>

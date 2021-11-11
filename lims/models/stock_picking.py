@@ -57,7 +57,7 @@ class StockPicking(models.Model):
                                     ("lot_id", "=", line.lot_id.id),
                                 ]
                             ):
-                                self.env["lims.analysis.line"].create(
+                                analysis_id = self.env["lims.analysis.line"].create(
                                     {
                                         "product_id": line.product_id.product_tmpl_id.id,
                                         "stock_move_line_id": line.id,
@@ -67,3 +67,11 @@ class StockPicking(models.Model):
                                         "lot_id": line.lot_id.id,
                                     }
                                 )
+                                for component in analysis.component_ids:
+                                    self.env["lims.analysis.numerical.result"].create(
+                                        {
+                                            "analysis_ids": analysis_id.id,
+                                            "component_ids": component.id,
+                                            "limit_value": 5.0,
+                                        }
+                                    )

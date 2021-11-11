@@ -93,6 +93,11 @@
                             <field name="date_sample_begin" />
                             <field name="sampler" />
                         </group>
+
+                            <group string="Numerical Results" name="numerical_results">
+                                <field name="numerical_result" widget="one2many_list" />
+                            </group>
+
                 </sheet>
             </form>
         </field>
