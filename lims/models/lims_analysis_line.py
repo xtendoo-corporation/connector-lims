@@ -116,7 +116,22 @@ class LimsAnalysisLine(models.Model):
             vals["name"] = (
                 self.env["ir.sequence"].next_by_code("analysis.line.lims.code") or "/"
             )
-        return super(LimsAnalysisLine, self).create(vals)
+            analysis_base_id = self.env["lims.analysis"].search(
+                [
+                    ("id", "=", vals.get("analysis_id")),
+                ]
+            )
+            result = super(LimsAnalysisLine, self).create(vals)
+            for component in analysis_base_id.component_ids:
+                self.env["lims.analysis.numerical.result"].create(
+                    {
+                        "analysis_ids": result.id,
+                        "component_ids": component.id,
+                        "limit_value": 5.0,
+                    }
+                )
+
+        return result
 
     def toggle_active(self):
         res = super().toggle_active()
