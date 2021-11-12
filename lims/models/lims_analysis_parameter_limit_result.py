@@ -14,8 +14,8 @@ class LimsAnalysisParameterLimitResult(models.Model):
     )
     operator_from = fields.Selection(
         [
-            ("<", "<"),
-            ("<=", "<="),
+            (">", ">"),
+            (">=", ">="),
             ("=", "="),
         ],
         "Operator From",
@@ -23,8 +23,8 @@ class LimsAnalysisParameterLimitResult(models.Model):
     limit_value_from = fields.Float(string="Limit Value From", store=True)
     operator_to = fields.Selection(
         [
-            (">", ">"),
-            (">=", ">="),
+            ("<", "<"),
+            ("<=", "<="),
             ("=", "="),
         ],
         "Operator to",
