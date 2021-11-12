@@ -57,7 +57,8 @@
                         widget="badge"
                         decoration-success="result == 'pass'"
                         decoration-warning="result == 'warning'"
-                        decoration-info="result == 'fail'"
+                        decoration-danger="result == 'fail'"
+                        decoration-info="result == 'none'"
                     />
                     <label for="name" />
 
