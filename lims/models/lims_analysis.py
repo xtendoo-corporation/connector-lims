@@ -9,12 +9,27 @@ class LimsAnalysis(models.Model):
     _description = "Analysis LIMS"
     name = fields.Char(string="Name", store=True)
     description = fields.Char(string="Description", store=True)
-    analysis_group_ids = fields.Many2one(
+    # analysis_group_ids = fields.Many2one(
+    #     "lims.analysis.group",
+    #     "Analysis Group",
+    #     invisible=True,
+    # )
+    analysis_group_ids = fields.Many2many(
         "lims.analysis.group",
-        "Analysis Group",
-        invisible=True,
+        "lims_analysis_group_lims_analysis_rel",
+        "analysis_id",
+        "analysis_group_id",
+        "Analysis Group lims",
     )
-    parameter_ids = fields.One2many(
+    # parameter_ids = fields.One2many(
+    #     "lims.analysis.parameter",
+    #     "analysis_ids",
+    # )
+
+    parameter_ids = fields.Many2many(
         "lims.analysis.parameter",
-        "analysis_ids",
+        "lims_analysis_lims_analysis_parameter_rel",
+        "analysis_id",
+        "parameter_id",
+        string="Parameters",
     )

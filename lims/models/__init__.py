@@ -11,3 +11,6 @@ from . import stock_picking
 from . import lims_analysis_parameter
 from . import lims_analysis_parameter_limit_result
 from . import lims_analysis_numerical_result
+from . import lims_analysis_lims_analysis_parameter_rel
+from . import lims_analysis_group_lims_analysis_rel
+from . import product_template_lims_analysis_group_rel

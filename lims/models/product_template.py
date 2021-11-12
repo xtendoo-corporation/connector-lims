@@ -12,11 +12,19 @@ class ProductTemplate(models.Model):
         string="Is a product sample",
         default=False,
     )
-    analysis_group_ids = fields.One2many(
+    # analysis_group_ids = fields.One2many(
+    #     "lims.analysis.group",
+    #     "product_ids",
+    #     invisible=True,
+    # )
+    analysis_group_ids = fields.Many2many(
         "lims.analysis.group",
-        "product_ids",
-        invisible=True,
+        "product_template_lims_analysis_group_rel",
+        "analysis_group_id",
+        "product_id",
+        string="Analysis Group",
     )
+
     analysis_count = fields.Integer(
         "Number of Analysis Generated",
         compute="_compute_analysis_count",

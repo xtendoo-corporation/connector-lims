@@ -7,8 +7,15 @@ from odoo import fields, models
 class LimsAnalysisParameter(models.Model):
     _name = "lims.analysis.parameter"
     _description = "Parameter LIMS"
-    analysis_ids = fields.Many2one(
+    # analysis_ids = fields.Many2one(
+    #     "lims.analysis",
+    #     "Analysis lims",
+    # )
+    analysis_ids = fields.Many2many(
         "lims.analysis",
+        "lims_analysis_lims_analysis_parameter_rel",
+        "parameter_id",
+        "analysis_id",
         "Analysis lims",
     )
     name = fields.Char(string="Name", store=True)
