@@ -11,8 +11,6 @@
         <field name="model">lims.analysis.parameter</field>
         <field name="arch" type="xml">
             <form>
-                <label for="analysis_ids" />
-                <field name="analysis_ids" />
                 <br />
                 <label for="name" />
                 <field name="name" />
