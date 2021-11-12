@@ -131,6 +131,7 @@
                     decoration-danger="result == 'fail'"
                     decoration-info="result == 'none'"
                 />
+                    <field name="priority" class="oe_inline" widget="priority" />
                 </tree>
         </field>
     </record>
