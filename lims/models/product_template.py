@@ -20,8 +20,8 @@ class ProductTemplate(models.Model):
     analysis_group_ids = fields.Many2many(
         "lims.analysis.group",
         "product_template_lims_analysis_group_rel",
-        "analysis_group_id",
         "product_id",
+        "analysis_group_id",
         string="Analysis Group",
     )
 

@@ -27,7 +27,7 @@ class LimsAnalysisGroup(models.Model):
     product_ids = fields.Many2many(
         "product.template",
         "product_template_lims_analysis_group_rel",
-        "product_id",
         "analysis_group_id",
+        "product_id",
         "Products",
     )
