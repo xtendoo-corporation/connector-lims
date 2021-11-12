@@ -18,9 +18,9 @@
                 <label for="description" />
                 <field name="description" widget="section_and_note_text" />
                 <notebook>
-                    <page string="Components" name="components">
+                    <page string="Parameters" name="parameters">
                         <field
-                            name="component_ids"
+                            name="parameter_ids"
                             widget="one2many_list"
                             editable="bottom"
                         />
@@ -37,7 +37,7 @@
         <field name="arch" type="xml">
                 <tree>
                     <field name="name" />
-                    <field name="component_ids" />
+                    <field name="parameter_ids" />
                 </tree>
         </field>
     </record>

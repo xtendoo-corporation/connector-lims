@@ -6,9 +6,9 @@
 -->
 <odoo>
 
-    <record id="analysis_components_form" model="ir.ui.view">
-        <field name="name">analysis.components.form</field>
-        <field name="model">lims.analysis.component</field>
+    <record id="analysis_parameters_form" model="ir.ui.view">
+        <field name="name">analysis.parameters.form</field>
+        <field name="model">lims.analysis.parameter</field>
         <field name="arch" type="xml">
             <form>
                 <label for="analysis_ids" />
@@ -17,13 +17,13 @@
                 <label for="name" />
                 <field name="name" />
                  <br />
-                 <label for="component_uom" />
-                <field name="component_uom" />
+                 <label for="parameter_uom" />
+                <field name="parameter_uom" />
                 <br />
                  <notebook>
                     <page string="Limit Results" name="limit_results">
                         <field
-                            name="component_limit_result_ids"
+                            name="parameter_limit_result_ids"
                             widget="one2many_list"
                         />
                     </page>
@@ -32,9 +32,9 @@
         </field>
     </record>
 
-    <record id="analysis_components_tree" model="ir.ui.view">
-        <field name="name">analysis.component.tree</field>
-        <field name="model">lims.analysis.component</field>
+    <record id="analysis_parameters_tree" model="ir.ui.view">
+        <field name="name">analysis.parameter.tree</field>
+        <field name="model">lims.analysis.parameter</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree>
@@ -43,21 +43,21 @@
         </field>
     </record>
 
-    <record id="action_lims_component" model="ir.actions.act_window">
-        <field name="name">Component Lims</field>
+    <record id="action_lims_parameter" model="ir.actions.act_window">
+        <field name="name">parameter Lims</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">lims.analysis.component</field>
+        <field name="res_model">lims.analysis.parameter</field>
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
         <field name="context">{'module' : 'lims'}</field>
     </record>
 
     <menuitem
-        id="menu_lims_component"
-        name="Componenet Lims"
+        id="menu_lims_parameter"
+        name="Parameter Lims"
         parent="lims.cat_menu_lims_config"
         sequence="0"
-        action="action_lims_component"
+        action="action_lims_parameter"
         groups="base.group_system"
     />
 </odoo>

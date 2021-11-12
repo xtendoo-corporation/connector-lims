@@ -14,7 +14,7 @@ class LimsAnalysis(models.Model):
         "Analysis Group",
         invisible=True,
     )
-    component_ids = fields.One2many(
-        "lims.analysis.component",
+    parameter_ids = fields.One2many(
+        "lims.analysis.parameter",
         "analysis_ids",
     )

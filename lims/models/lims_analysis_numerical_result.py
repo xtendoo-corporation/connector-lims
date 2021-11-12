@@ -12,13 +12,13 @@ class LimsAnalysisNumericalResult(models.Model):
         "lims.analysis.line",
         "Analysis lims Line",
     )
-    component_ids = fields.Many2one(
-        "lims.analysis.component",
-        "Analysis lims Component",
+    parameter_ids = fields.Many2one(
+        "lims.analysis.parameter",
+        "Analysis lims parameter",
     )
     value = fields.Float(string="Value", store=True)
 
-    component_uom = fields.Many2one(related="component_ids.component_uom", store=True)
+    parameter_uom = fields.Many2one(related="parameter_ids.parameter_uom", store=True)
     limit_value = fields.Float(string="Limit Value", store=True)
     between_limit_value = fields.Char(string="Between Limit Value", store=True)
     is_null = fields.Boolean(string="Is Null", store=True)

@@ -6,21 +6,21 @@
 -->
 <odoo>
 
-    <record id="analysis_component_form" model="ir.ui.view">
-        <field name="name">analysis.component.limit.result.form</field>
-        <field name="model">lims.analysis.component.limit.result</field>
+    <record id="analysis_parameter_form" model="ir.ui.view">
+        <field name="name">analysis.parameter.limit.result.form</field>
+        <field name="model">lims.analysis.parameter.limit.result</field>
         <field name="arch" type="xml">
             <form>
-                <label for="component_ids" />
-                <field name="component_ids" />
+                <label for="parameter_ids" />
+                <field name="parameter_ids" />
                 <br />
             </form>
         </field>
     </record>
 
-    <record id="analysis_components_tree" model="ir.ui.view">
-        <field name="name">analysis.components.limit.result.tree</field>
-        <field name="model">lims.analysis.component.limit.result</field>
+    <record id="analysis_parameters_tree" model="ir.ui.view">
+        <field name="name">analysis.parameters.limit.result.tree</field>
+        <field name="model">lims.analysis.parameter.limit.result</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree editable="bottom">

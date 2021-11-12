@@ -4,13 +4,13 @@
 from odoo import fields, models
 
 
-class LimsAnalysisComponentLimitResult(models.Model):
-    _name = "lims.analysis.component.limit.result"
-    _description = "Component LIMS Limit Result"
+class LimsAnalysisParameterLimitResult(models.Model):
+    _name = "lims.analysis.parameter.limit.result"
+    _description = "parameter LIMS Limit Result"
 
-    component_ids = fields.Many2one(
-        "lims.analysis.component",
-        "Analysis lims Component",
+    parameter_ids = fields.Many2one(
+        "lims.analysis.parameter",
+        "Analysis lims parameter",
     )
     operator_from = fields.Selection(
         [
@@ -31,7 +31,7 @@ class LimsAnalysisComponentLimitResult(models.Model):
             ("<=", "<="),
             ("=", "="),
         ],
-        "Operator From",
+        "Operator to",
     )
     limit_value_to = fields.Float(string="Limit Value to", store=True)
     type = fields.Selection(

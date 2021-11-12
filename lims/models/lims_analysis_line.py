@@ -122,13 +122,13 @@ class LimsAnalysisLine(models.Model):
                 ]
             )
             result = super(LimsAnalysisLine, self).create(vals)
-            for component in analysis_base_id.component_ids:
+            for parameter in analysis_base_id.parameter_ids:
                 self.env["lims.analysis.numerical.result"].create(
                     {
                         "analysis_ids": result.id,
-                        "component_ids": component.id,
-                        "limit_value": component._get_limit_value(),
-                        "between_limit_value": component._get_between_limit_value(),
+                        "parameter_ids": parameter.id,
+                        "limit_value": parameter._get_limit_value(),
+                        "between_limit_value": parameter._get_between_limit_value(),
                     }
                 )
 

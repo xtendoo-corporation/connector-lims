@@ -11,23 +11,23 @@
         <field name="model">lims.analysis.numerical.result</field>
         <field name="arch" type="xml">
             <form>
-                <label for="component_ids" />
-                <field name="component_ids" />
+                <label for="parameter_ids" />
+                <field name="parameter_ids" />
                 <br />
             </form>
         </field>
     </record>
 
     <record id="analysis_numerical_result_tree" model="ir.ui.view">
-        <field name="name">analysis.components.limit.result.tree</field>
+        <field name="name">analysis.numerical.result.result.tree</field>
         <field name="model">lims.analysis.numerical.result</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree editable="bottom">
                 <field name="analysis_ids" readonly="1" />
-                <field name="component_ids" readonly="1" />
+                <field name="parameter_ids" readonly="1" />
                 <field name="value" />
-                <field name="component_uom" />
+                <field name="parameter_uom" />
                 <field name="limit_value" />
                 <field name="between_limit_value" />
                 <field name="is_null" />
