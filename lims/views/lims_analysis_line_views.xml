@@ -54,10 +54,17 @@
                         name="result"
                         style="width:5%;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;"
                         class="ml-6 float-right"
-                        widget="label_selection"
-                        options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
+                        widget="badge"
+                        decoration-success="result == 'pass'"
+                        decoration-warning="result == 'warning'"
+                        decoration-info="result == 'fail'"
                     />
                     <label for="name" />
+
+                    <!--
+                        widget="label_selection"
+                        options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
+                    -->
 
                     <field name="name" />
                         <group name="Sample Information" string="Sample Information">
@@ -117,8 +124,11 @@
                     <field
                     name="result"
                     class="w-50 text-center text-uppercase font-weight-bolder"
-                    widget="label_selection"
-                    options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
+                    widget="badge"
+                    decoration-success="result == 'pass'"
+                    decoration-warning="result == 'warning'"
+                    decoration-danger="result == 'fail'"
+                    decoration-info="result == 'none'"
                 />
                 </tree>
         </field>

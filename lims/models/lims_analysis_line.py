@@ -162,7 +162,7 @@ class LimsAnalysisLine(models.Model):
         if self.filtered(lambda self: self.result != "none"):
             raise UserError(_("You can only to realize analysis Unrealized Analysis"))
         # TO-DO: Realizar el analisis y cambiar el result.
-        analysis_result = "pass"
+        analysis_result = "fail"
 
         res = self.write({"state": "done", "result": analysis_result})
         return res
