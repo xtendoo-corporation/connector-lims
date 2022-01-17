@@ -7,6 +7,7 @@ from odoo.exceptions import UserError
 
 class LimsAnalysisLine(models.Model):
     _name = "lims.analysis.line"
+    _inherit = ["mail.thread"]
     _description = "Analysis Line LIMS"
     name = fields.Char(string="Name", store=True, readonly="1")
     analysis_id = fields.Many2one(
@@ -128,6 +129,7 @@ class LimsAnalysisLine(models.Model):
                         "analysis_ids": result.id,
                         "parameter_ids": parameter.id,
                         "limit_value": parameter._get_limit_value(),
+                        "limit_value_char": parameter._get_limit_value_char(),
                         "between_limit_value": parameter._get_between_limit_value(),
                     }
                 )
@@ -162,8 +164,16 @@ class LimsAnalysisLine(models.Model):
         if self.filtered(lambda self: self.result != "none"):
             raise UserError(_("You can only to realize analysis Unrealized Analysis"))
         # TO-DO: Realizar el analisis y cambiar el result.
-
-        analysis_result = "fail"
-
+        analysis_result = self.result
+        result_value = []
+        for result in self.numerical_result:
+            analysis_result = result._get_value_result(result.value)
+            result_value.append(analysis_result)
+        for line in result_value:
+            if line == "fail":
+                analysis_result = line
+                break
+            if line == "warning":
+                analysis_result = line
         res = self.write({"state": "done", "result": analysis_result})
         return res

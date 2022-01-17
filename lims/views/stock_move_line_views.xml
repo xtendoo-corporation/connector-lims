@@ -8,10 +8,7 @@
     <record id="stock_move_line_view_lims_form" model="ir.ui.view">
         <field name="name">stock.move.line.view.lims.form</field>
         <field name="model">stock.move.line</field>
-        <field
-            name="inherit_id"
-            ref="stock.view_stock_move_line_detailed_operation_tree"
-        />
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree" />
         <field name="arch" type="xml">
             <xpath expr="//tree/field[@name='qty_done']" position="after">
                 <field name="is_product_sample" invisible="1" />

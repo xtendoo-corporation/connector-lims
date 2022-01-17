@@ -28,7 +28,7 @@
                 <field name="parameter_ids" readonly="1" />
                 <field name="value" />
                 <field name="parameter_uom" />
-                <field name="limit_value" />
+                <field name="limit_value_char" />
                 <field name="between_limit_value" />
                 <field name="is_null" />
                 <field name="corrected_value" />

@@ -16,9 +16,10 @@ class LimsAnalysisNumericalResult(models.Model):
         "lims.analysis.parameter",
         "Analysis lims parameter",
     )
-    value = fields.Float(string="Value", store=True)
+    value = fields.Float(string="Value", store=True, track_visibility="onchange")
 
     parameter_uom = fields.Many2one(related="parameter_ids.parameter_uom", store=True)
+    limit_value_char = fields.Char(string="Limit Value", store=True)
     limit_value = fields.Float(string="Limit Value", store=True)
     between_limit_value = fields.Char(string="Between Limit Value", store=True)
     is_null = fields.Boolean(string="Is Null", store=True)
@@ -28,3 +29,17 @@ class LimsAnalysisNumericalResult(models.Model):
     dil_fact = fields.Float(string="Dil. Fact.", store=True)
     reason = fields.Char(string="Reason", store=True)
     comment = fields.Char(string="Comment", store=True)
+
+    def _get_value_result(self, value):
+        result_value = ""
+        result = []
+        for parameter in self.parameter_ids:
+            result_value = parameter._get_parameter_analysis_result(value)
+            if result_value == "warning":
+                result_value = "warning"
+            if result_value == "not_conform":
+                result_value = "fail"
+            if result_value == "conform":
+                result_value = "pass"
+            result.append(result_value)
+        return result_value

@@ -52,7 +52,7 @@
                     />
                     <field
                         name="result"
-                        style="width:5%;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;"
+                        style="width:15%;height:50px;display:flex;align-items: center;justify-content:center;font-size:1.3em;font-weight:bolder;color:white;"
                         class="ml-6 float-right"
                         widget="badge"
                         decoration-success="result == 'pass'"
@@ -60,53 +60,81 @@
                         decoration-danger="result == 'fail'"
                         decoration-info="result == 'none'"
                     />
-                    <label for="name" />
-
                     <!--
                         widget="label_selection"
                         options="{'classes': {'unrealized': 'default','warning': 'warning','fail': 'danger','pass': 'success'}}"
                     -->
 
-                    <field name="name" />
-                        <group name="Sample Information" string="Sample Information">
-                            <field name="analysis_id" />
-                            <field name="stock_move_line_id" />
-                            <field
-                            name="product_id"
-                            domain="[('is_product_sample', '=', True)]"
-                        />
-                            <field name="description" />
-                            <field name="lot_id" />
-                            <field
-                            name="priority"
-                            class="oe_inline"
-                            widget="priority"
-                        />
-                            <!--<field name="regulation"></field>-->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                        <group>
+                            <group
+                            name="Sample Information"
+                            string="Sample Information"
+                        >
+                                <field name="analysis_id" />
+                                <field name="stock_move_line_id" invisible="1" />
+                                <field
+                                name="product_id"
+                                domain="[('is_product_sample', '=', True)]"
+                            />
+                                <field name="description" />
+                                <field name="lot_id" />
+                                <field
+                                name="priority"
+                                class="oe_inline"
+                                widget="priority"
+                            />
+                                <!--<field name="regulation"></field>-->
+                            </group>
+                            <group
+                            name="General Information"
+                            string="General Information"
+                        >
+                                <field
+                                name="laboratory_id"
+                                domain="[('is_lab', '=', True)]"
+                            />
+                                <field name="customer_id" />
+                                <field name="customer_contact_id" />
+                                <!--<field name="active"></field>-->
+                                <!--<field name="tag_ids"></field>-->
+                                <field name="date_sample" />
+                                <field name="date_sample_begin" />
+                                <field name="sampler" />
+                            </group>
                         </group>
-                        <group name="General Information" string="General Information">
-                            <field
-                            name="laboratory_id"
-                            domain="[('is_lab', '=', True)]"
-                        />
-                            <field name="customer_id" />
-                            <field name="customer_contact_id" />
-                            <field name="reason" />
-                            <field name="reference" />
-                            <!--<field name="active"></field>-->
-                            <!--<field name="tag_ids"></field>-->
-                            <field name="date_plan" />
-                            <field name="date_due" />
-                            <field name="date_sample" />
-                            <field name="date_sample_begin" />
-                            <field name="sampler" />
-                        </group>
-
-                            <group string="Numerical Results" name="numerical_results">
-                                <field name="numerical_result" widget="one2many_list" />
+                    <notebook>
+                        <page string="Numerical Results" name="numerical_results">
+                            <field name="numerical_result" widget="one2many_list" />
+                        </page>
+                        <page string="Other Information" name="other_info">
+                            <group>
+                                <group>
+                                    <field name="reason" />
+                                    <field name="reference" />
+                                    <field name="date_plan" />
+                                    <field name="date_due" />
+                                </group>
                             </group>
 
+                        </page>
+                    </notebook>
+                    <!--<group string="Numerical Results" name="numerical_results">
+                        <field name="numerical_result" widget="one2many_list" />
+                    </group>-->
+
                 </sheet>
+                <!-- Add chatter and followers widget -->
+                <div class="oe_chatter">
+                    <!-- Followers view -->
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <!-- Chatter view -->
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
             </form>
         </field>
     </record>
