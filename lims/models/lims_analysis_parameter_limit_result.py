@@ -14,18 +14,18 @@ class LimsAnalysisParameterLimitResult(models.Model):
     )
     operator_from = fields.Selection(
         [
-            (">", ">"),
-            (">=", ">="),
-            ("=", "="),
+            (">", "Mayor que"),
+            (">=", "Mayor o igual que"),
+            ("=", "Igual que"),
         ],
         "Operator From",
     )
     limit_value_from = fields.Float(string="Limit Value From", store=True)
     operator_to = fields.Selection(
         [
-            ("<", "<"),
-            ("<=", "<="),
-            ("=", "="),
+            ("<", "Menor que"),
+            ("<=", "Menor o igual que"),
+            ("=", "Igual que"),
         ],
         "Operator to",
     )

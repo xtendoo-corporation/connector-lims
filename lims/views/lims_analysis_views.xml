@@ -43,7 +43,7 @@
     </record>
 
     <record id="action_lims_analysis" model="ir.actions.act_window">
-        <field name="name">Analysis Lims</field>
+        <field name="name">Análisis</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">lims.analysis</field>
         <field name="view_mode">tree,form</field>
@@ -53,7 +53,7 @@
 
     <menuitem
         id="menu_lims_analysis"
-        name="Analysis Lims"
+        name="Análisis"
         parent="lims.cat_menu_lims_config"
         sequence="0"
         action="action_lims_analysis"

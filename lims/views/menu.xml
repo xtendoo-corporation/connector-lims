@@ -12,7 +12,7 @@
     />
     <menuitem
         id="cat_menu_lims_product"
-        name="Products"
+        name="Productos"
         parent="main_menu_lims"
         sequence="0"
         action="action_product_product_sample"
@@ -20,7 +20,7 @@
     />
     <menuitem
         id="cat_menu_lims_lab"
-        name="Laboratories"
+        name="Laboratorios"
         parent="main_menu_lims"
         sequence="0"
         action="action_contacts_lab"
@@ -28,13 +28,13 @@
     />
     <menuitem
         id="cat_menu_lims_config"
-        name="Configuration"
+        name="Configuración"
         parent="main_menu_lims"
         sequence="50"
     />
     <menuitem
         id="cat_menu_lims_config_organizing"
-        name="Organizing"
+        name="Organización"
         parent="cat_menu_lims_config"
         sequence="5"
     />

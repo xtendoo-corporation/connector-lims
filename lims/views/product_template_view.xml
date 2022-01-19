@@ -43,7 +43,7 @@
                     <label for="analysis_group_ids" />
                     <field
                         name="analysis_group_ids"
-                        widget="many2many_tags"
+                        widget="res_partner_many2one"
                         groups="base.group_no_one"
                     />
                 </page>
@@ -52,7 +52,7 @@
     </record>
 
     <record id="action_product_product_sample" model="ir.actions.act_window">
-        <field name="name">Products</field>
+        <field name="name">Muestras</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">product.template</field>
         <field name="view_mode">kanban,tree,form,activity</field>

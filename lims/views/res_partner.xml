@@ -27,7 +27,7 @@
     </record>
 
     <record id="action_contacts_lab" model="ir.actions.act_window">
-        <field name="name">Laboratories</field>
+        <field name="name">Laboratorios</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">kanban,tree,form,activity</field>

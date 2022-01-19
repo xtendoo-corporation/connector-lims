@@ -23,7 +23,7 @@
         </field>
     </record>
     <record id="action_lims_settings_general" model="ir.actions.act_window">
-        <field name="name">General Settings</field>
+        <field name="name">Configuración General</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
@@ -32,7 +32,7 @@
     </record>
     <menuitem
         id="menu_lims_settings_general"
-        name="General Settings"
+        name="Configuración General"
         parent="cat_menu_lims_config"
         sequence="0"
         action="action_lims_settings_general"

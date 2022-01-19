@@ -16,7 +16,7 @@
                 <field name="name" />
                  <br />
                 <label for="analysis_ids" />
-                <field name="analysis_ids" widget="many2many_tags" />
+                <field name="analysis_ids" widget="res_partner_many2one" />
             </form>
         </field>
     </record>
@@ -33,7 +33,7 @@
     </record>
 
     <record id="action_lims_analysis_group" model="ir.actions.act_window">
-        <field name="name">Analysis Group</field>
+        <field name="name">Grupo de Análisis</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">lims.analysis.group</field>
         <field name="view_mode">tree,form</field>
@@ -42,7 +42,7 @@
     </record>
     <menuitem
         id="menu_lims_analysis_group"
-        name="Analysis Group"
+        name="Grupos de Análisis"
         parent="cat_menu_lims_config"
         sequence="0"
         action="action_lims_analysis_group"

@@ -24,13 +24,20 @@
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree editable="bottom">
-                <field name="operator_from" />
-                <field name="limit_value_from" />
-                <field name="operator_to" />
-                <field name="limit_value_to" />
+                <field name="operator_from" string="Operador desde" />
+                <field name="limit_value_from" string="Valor desde" />
+                <field name="operator_to" string="Operador hasta" />
+                <field name="limit_value_to" string="Valor hasta" />
                 <field name="type" />
-                <field name="state" widget="selection" />
-                <field name="message" />
+                <field
+                    name="state"
+                    widget="selection"
+                    decoration-success="state == 'conform'"
+                    decoration-warning="state == 'warning'"
+                    decoration-danger="state == 'not_conform'"
+                    string="Estado"
+                />
+                <field name="message" string="Comentario" />
             </tree>
         </field>
     </record>

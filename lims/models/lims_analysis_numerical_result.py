@@ -1,7 +1,7 @@
 # Copyright 2021 - Daniel Domínguez https://xtendoo.es/
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class LimsAnalysisNumericalResult(models.Model):
@@ -16,7 +16,7 @@ class LimsAnalysisNumericalResult(models.Model):
         "lims.analysis.parameter",
         "Analysis lims parameter",
     )
-    value = fields.Float(string="Value", store=True, track_visibility="onchange")
+    value = fields.Float(string="Value", store=True, default="")
 
     parameter_uom = fields.Many2one(related="parameter_ids.parameter_uom", store=True)
     limit_value_char = fields.Char(string="Limit Value", store=True)
@@ -29,6 +29,17 @@ class LimsAnalysisNumericalResult(models.Model):
     dil_fact = fields.Float(string="Dil. Fact.", store=True)
     reason = fields.Char(string="Reason", store=True)
     comment = fields.Char(string="Comment", store=True)
+    result = fields.Selection(
+        [
+            ("none", "Unrealized"),
+            ("pass", "Approved"),
+            ("fail", "Failed"),
+            ("warning", "Warning"),
+        ],
+        string="Result",
+        default="none",
+        store=True,
+    )
 
     def _get_value_result(self, value):
         result_value = ""
@@ -43,3 +54,7 @@ class LimsAnalysisNumericalResult(models.Model):
                 result_value = "pass"
             result.append(result_value)
         return result_value
+
+    @api.onchange("value")
+    def _onchange_value(self):
+        self.result = self._get_value_result(self.value)

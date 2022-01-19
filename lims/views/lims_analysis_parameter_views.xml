@@ -42,7 +42,7 @@
     </record>
 
     <record id="action_lims_parameter" model="ir.actions.act_window">
-        <field name="name">parameter Lims</field>
+        <field name="name">Parámetros</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">lims.analysis.parameter</field>
         <field name="view_mode">tree,form</field>
@@ -52,7 +52,7 @@
 
     <menuitem
         id="menu_lims_parameter"
-        name="Parameter Lims"
+        name="Parámetros"
         parent="lims.cat_menu_lims_config"
         sequence="0"
         action="action_lims_parameter"

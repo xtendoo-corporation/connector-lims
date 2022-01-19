@@ -59,7 +59,7 @@ class LimsAnalysisParameter(models.Model):
         return between_limit_result
 
     def _get_parameter_analysis_result(self, value):
-        result = ""
+        result = "not_conform"
         for parameter_result in self.parameter_limit_result_ids:
             operator_to = ""
             operator_from = ""
@@ -84,11 +84,11 @@ class LimsAnalysisParameter(models.Model):
                 if operator_from != "":
                     str(value) + "" + operator_from
                 # if eval(operator):
-                # result = parameter_result.state
+                #     result = parameter_result.state
             # ES BETWEEN
             else:
                 # if eval(str(value) + "" + operator_from) and eval(
-                #    str(value) + "" + operator_to
+                #     str(value) + "" + operator_to
                 # ):
                 result = parameter_result.state
         return result

@@ -15,25 +15,25 @@
                         <button
                         name="action_confirm"
                         type="object"
-                        string="Confirm"
+                        string="Validar"
                         attrs="{'invisible': [('state', '!=', 'draft')]}"
                     />
                         <button
                         name="action_draft"
                         type="object"
-                        string="Draft"
+                        string="Convertir a Borrador"
                         attrs="{'invisible': [('state', 'not in', ['to-do','cancel'])]}"
                     />
                         <button
                         name="action_cancel"
                         type="object"
-                        string="Cancel"
+                        string="Cancelar"
                         attrs="{'invisible': [('state', 'in', ['draft', 'done','cancel'])]}"
                     />
                         <button
                         name="action_analysis"
                         type="object"
-                        string="Analysis"
+                        string="Analizar"
                         attrs="{'invisible': [('state', '!=', 'to-do')]}"
                     />
                         <field
@@ -46,7 +46,7 @@
                     <field name="active" invisible="1" />
                     <widget
                         name="web_ribbon"
-                        title="Archived"
+                        title="Archivado"
                         bg_color="bg-danger"
                         attrs="{'invisible': [('active', '=', True)]}"
                     />
@@ -73,7 +73,7 @@
                         <group>
                             <group
                             name="Sample Information"
-                            string="Sample Information"
+                            string="Información de la muestra"
                         >
                                 <field name="analysis_id" />
                                 <field name="stock_move_line_id" invisible="1" />
@@ -92,7 +92,7 @@
                             </group>
                             <group
                             name="General Information"
-                            string="General Information"
+                            string="Información General"
                         >
                                 <field
                                 name="laboratory_id"
@@ -108,10 +108,10 @@
                             </group>
                         </group>
                     <notebook>
-                        <page string="Numerical Results" name="numerical_results">
+                        <page string="Resultados" name="numerical_results">
                             <field name="numerical_result" widget="one2many_list" />
                         </page>
-                        <page string="Other Information" name="other_info">
+                        <page string="Otra Información" name="other_info">
                             <group>
                                 <group>
                                     <field name="reason" />
@@ -165,7 +165,7 @@
     </record>
 
     <record id="action_lims_analysis_line" model="ir.actions.act_window">
-        <field name="name">Analysis Line Lims</field>
+        <field name="name">Análisis Creados</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">lims.analysis.line</field>
         <field name="view_mode">tree,form</field>
@@ -175,7 +175,7 @@
 
     <menuitem
         id="menu_lims_analysis_line"
-        name="Analysis Line Lims"
+        name="Análisis creados"
         parent="cat_menu_lims_config"
         sequence="0"
         action="action_lims_analysis_line"
@@ -195,14 +195,14 @@
 
     <!-- Action -->
     <record id="analysis_new_action" model="ir.actions.act_window">
-        <field name="name">Analysis</field>
+        <field name="name">Análisis</field>
         <field name="res_model">lims.analysis.line</field>
         <field name="view_mode">form</field>
         <field name="target">current</field>
     </record>
 
     <record id="action_view_analysis" model="ir.actions.act_window">
-        <field name="name">Analysis Line Lims</field>
+        <field name="name">Análisis Creados</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">lims.analysis.line</field>
         <field name="view_mode">tree,form</field>
