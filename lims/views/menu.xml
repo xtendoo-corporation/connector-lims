@@ -11,18 +11,42 @@
         web_icon="lims,static/description/icon.png"
     />
     <menuitem
-        id="cat_menu_lims_product"
+        id="cat_menu_lims_product_parent"
         name="Productos"
         parent="main_menu_lims"
+        sequence="0"
+    />
+    <menuitem
+        id="cat_menu_lims_product"
+        name="Productos"
+        parent="cat_menu_lims_product_parent"
         sequence="0"
         action="action_product_product_sample"
         groups="base.group_system"
     />
     <menuitem
+        id="cat_menu_lims_lots"
+        name="Lotes/Nºde Serie"
+        parent="cat_menu_lims_product_parent"
+        sequence="1"
+        action="stock.action_production_lot_form"
+        groups="base.group_system"
+    />
+
+    <menuitem
+        id="cat_menu_lims_lots_generate"
+        name="Generar Lotes/Nºde Serie"
+        parent="cat_menu_lims_product_parent"
+        sequence="2"
+        action="lims.action_menu_wizard_lot"
+        groups="base.group_system"
+    />
+
+    <menuitem
         id="cat_menu_lims_lab"
         name="Laboratorios"
         parent="main_menu_lims"
-        sequence="0"
+        sequence="1"
         action="action_contacts_lab"
         groups="base.group_system"
     />
@@ -30,12 +54,12 @@
         id="cat_menu_lims_config"
         name="Configuración"
         parent="main_menu_lims"
-        sequence="50"
+        sequence="2"
     />
     <menuitem
         id="cat_menu_lims_config_organizing"
         name="Organización"
         parent="cat_menu_lims_config"
-        sequence="5"
+        sequence="0"
     />
 </odoo>

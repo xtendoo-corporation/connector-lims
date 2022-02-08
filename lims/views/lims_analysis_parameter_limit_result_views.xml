@@ -18,7 +18,7 @@
         </field>
     </record>
 
-    <record id="analysis_parameters_tree" model="ir.ui.view">
+    <record id="analysis_parameters_result_tree" model="ir.ui.view">
         <field name="name">analysis.parameters.limit.result.tree</field>
         <field name="model">lims.analysis.parameter.limit.result</field>
         <field name="type">tree</field>
