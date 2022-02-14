@@ -100,10 +100,28 @@ class SaleOrderLine(models.Model):
             return purchase_order
         return self._create_purchase_order(line)
 
+    def _create_supplier_line(self, line):
+        self.ensure_one()
+        vals = [
+            ("name", "=", line.order_id.partner_id.id),
+            ("product_tmpl_id", "=", line.product_id.product_tmpl_id.id),
+            ("product_id", "=", line.product_id.id),
+        ]
+        have_supplier = self.env["product.supplierinfo"].search(vals)
+        if not have_supplier:
+            self.env["product.supplierinfo"].sudo().create(
+                {
+                    "name": line.order_id.partner_id.id,
+                    "product_tmpl_id": line.product_id.product_tmpl_id.id,
+                }
+            )
+
     def _create_purchase_order(self, line):
+        self._create_supplier_line(line)
         PurchaseOrder = self.env["purchase.order"]
         values = line._purchase_sample_prepare_order_values(line.order_id.partner_id)
         purchase_order = PurchaseOrder.create(values)
+        purchase_order.button_confirm()
         return purchase_order
 
     def _purchase_sample_generation(self):

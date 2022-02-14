@@ -11,3 +11,7 @@ class ResPartner(models.Model):
         string="Laboratory",
         default=False,
     )
+    send_by_mail = fields.Boolean(
+        string="Enviar por correo",
+        default=True,
+    )

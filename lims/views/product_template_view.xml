@@ -36,16 +36,11 @@
             <notebook position="inside">
                 <page
                     name="product_lims"
-                    groups="base.group_no_one"
                     string="LIMS"
                     attrs="{'invisible': [('is_product_sample', '!=', True)]}"
                 >
                     <label for="analysis_group_ids" />
-                    <field
-                        name="analysis_group_ids"
-                        widget="res_partner_many2one"
-                        groups="base.group_no_one"
-                    />
+                    <field name="analysis_group_ids" widget="res_partner_many2one" />
                 </page>
             </notebook>
         </field>

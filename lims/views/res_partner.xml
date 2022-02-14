@@ -5,24 +5,28 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-    <record id="re_partner_form_view" model="ir.ui.view">
-        <field name="name">re.partner.form.view</field>
+    <record id="res_partner_form_view" model="ir.ui.view">
+        <field name="name">res.partner.form.view</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//h1" position="after">
-                <div
+             <xpath expr="//sheet/group" position="before">
+                  <div
                     class="o_row"
                     attrs="{'invisible': ['|',('is_company','=',False),('parent_id','!=',False)]}"
                 >
-                    <group name="is_lab">
-                        <label for="is_lab" />
-                        <div class="o_row">
+                      <group name="lims" String="Lims">
+                          <label for="is_lab" />
+                          <div class="o_row">
                             <field name="is_lab" />
+                        </div>
+                        <label for="send_by_mail" />
+                        <div class="o_row">
+                            <field name="send_by_mail" />
                         </div>
                     </group>
                 </div>
-            </xpath>
+             </xpath>
         </field>
     </record>
 

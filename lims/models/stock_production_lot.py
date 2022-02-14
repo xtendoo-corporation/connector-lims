@@ -13,3 +13,8 @@ class ProductionLot(models.Model):
         required=False,
         check_company=True,
     )
+    lot_image_ids = fields.One2many(
+        "sample.image",
+        "lot_id",
+        string="Extra Sample Media",
+    )

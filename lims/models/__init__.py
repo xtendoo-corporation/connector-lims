@@ -15,3 +15,4 @@ from . import lims_analysis_lims_analysis_parameter_rel
 from . import lims_analysis_group_lims_analysis_rel
 from . import product_template_lims_analysis_group_rel
 from . import stock_production_lot
+from . import sample_image

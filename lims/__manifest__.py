@@ -31,6 +31,7 @@
         "views/stock_picking_view.xml",
         "wizards/wizard_lot.xml",
         "views/print/label_print.xml",
+        "views/stock_production_lot_view.xml",
     ],
     "images": ["static/description/banner.png"],
     "application": True,
