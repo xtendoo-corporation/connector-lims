@@ -61,4 +61,22 @@
         </field>
     </record>
 
+     <record id="action_lims_analysis_numerical_result" model="ir.actions.act_window">
+        <field name="name">Componentes para analizar</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lims.analysis.numerical.result</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="context">{'module' : 'lims'}</field>
+    </record>
+
+    <menuitem
+        id="menu_analysis_numerical_result"
+        name="Componentes para analizar"
+        parent="cat_menu_lims_config"
+        sequence="0"
+        action="action_lims_analysis_numerical_result"
+        groups="base.group_system"
+    />
+
 </odoo>
