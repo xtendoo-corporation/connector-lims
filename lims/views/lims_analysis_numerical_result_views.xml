@@ -23,7 +23,7 @@
         <field name="model">lims.analysis.numerical.result</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
-            <tree editable="bottom">
+            <tree editable="bottom" multi_edit="1">
                 <field name="analysis_ids" readonly="1" invisible="1" />
                 <field
                     name="parameter_ids"
