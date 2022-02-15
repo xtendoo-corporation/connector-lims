@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+# Copyright 2021 - Manuel Calero <https://xtendoo.es>
+# Copyright 2021 - Daniel Domínguez <https://xtendoo.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+
+    <record id="analytical_method_lims_form" model="ir.ui.view">
+        <field name="name">analytical.method.lims.form</field>
+        <field name="model">lims.analytical.method</field>
+        <field name="arch" type="xml">
+            <form>
+                <label for="default_code" />
+                <field name="default_code" />
+                <br />
+                <label for="name" />
+                <field name="name" />
+                <br />
+                <label for="method_uom" />
+                <field name="method_uom" />
+                <br />
+                <label for="uncertainty" />
+                <field name="uncertainty" />
+                <br />
+                <label for="description" />
+                <field name="description" widget="section_and_note_text" />
+            </form>
+        </field>
+    </record>
+
+   <record id="analytical_method_lims_tree" model="ir.ui.view">
+        <field name="name">analytical.method.lims.tree</field>
+        <field name="model">lims.analytical.method</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+                <tree>
+                    <field name="default_code" />
+                    <field name="name" />
+                </tree>
+        </field>
+    </record>
+
+    <record id="action_lims_analytical_method" model="ir.actions.act_window">
+        <field name="name">Analytical Method</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lims.analytical.method</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="context">{'module' : 'lims'}</field>
+    </record>
+
+    <menuitem
+        id="menu_lims_analysis"
+        name="Analytical Method"
+        parent="lims.cat_menu_lims_config"
+        sequence="0"
+        action="action_lims_analytical_method"
+        groups="base.group_system"
+    />
+</odoo>

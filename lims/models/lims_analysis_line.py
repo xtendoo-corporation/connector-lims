@@ -42,12 +42,14 @@ class LimsAnalysisLine(models.Model):
     state = fields.Selection(
         [
             ("cancel", "Cancel"),
-            ("draft", "Draft"),
-            ("to-do", "To-Do"),
-            ("done", "Done"),
+            ("received", "Received"),
+            ("started", "Started"),
+            ("complete", "Complete"),
+            ("validated", "Validated"),
+            ("issued", "Issued"),
         ],
         "State",
-        default="draft",
+        default="received",
         tracking=True,
     )
     result = fields.Selection(

@@ -12,6 +12,9 @@
         <field name="arch" type="xml">
             <form>
                 <br />
+                <label for="default_code" />
+                <field name="default_code" />
+                 <br />
                 <label for="name" />
                 <field name="name" />
                  <br />

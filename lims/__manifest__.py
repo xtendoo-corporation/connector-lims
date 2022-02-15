@@ -30,8 +30,11 @@
         "views/lims_analysis_group_views.xml",
         "views/stock_picking_view.xml",
         "wizards/wizard_lot.xml",
-        "views/print/label_print.xml",
         "views/stock_production_lot_view.xml",
+        "views/lims_analytical_method_views.xml",
+        "views/sale_order_view.xml",
+        # Formatos
+        "views/label/label_print.xml",
     ],
     "images": ["static/description/banner.png"],
     "application": True,

@@ -18,12 +18,17 @@ class LimsAnalysisParameter(models.Model):
         "analysis_id",
         "Analysis lims",
     )
+    default_code = fields.Char("Reference", index=True)
     name = fields.Char(string="Name", store=True)
     parameter_limit_result_ids = fields.One2many(
         "lims.analysis.parameter.limit.result",
         "parameter_ids",
     )
     parameter_uom = fields.Many2one("uom.uom", "Unit of Measure")
+
+    _sql_constraints = [
+        ("code_uniq", "unique (default_code)", "Code already exists!"),
+    ]
 
     def _get_limit_value_char(self):
         limit_result_char = ""
@@ -86,7 +91,7 @@ class LimsAnalysisParameter(models.Model):
             # ES BETWEEN
             else:
                 # if eval(str(value) + "" + operator_from) and eval(
-                #    str(value) + "" + operator_to
+                #     str(value) + "" + operator_to
                 # ):
                 result = parameter_result.state
         return result
