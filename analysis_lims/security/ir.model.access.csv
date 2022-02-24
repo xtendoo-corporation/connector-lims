@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-
-access_quality_checks_lims_user,access_quality_checks_lims_user,model_quality_checks_lims,base.group_user,1,1,1,1
-access_analysis_lims_user,access_analysis_lims_user,model_analysis_lims,base.group_user,1,1,1,1
-access_analysis_line_lims_user,access_analysis_line_lims_user,model_analysis_line_lims,base.group_user,1,1,1,1

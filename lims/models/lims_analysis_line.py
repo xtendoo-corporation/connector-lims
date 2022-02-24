@@ -33,6 +33,7 @@ class LimsAnalysisLine(models.Model):
         default=lambda self: self.env.context.get("product_id"),
         tracking=True,
     )
+    pricelist_id = fields.Many2one("product.pricelist", "pricelist")
     priority = fields.Selection(
         [("0", "Normal"), ("1", "Low"), ("2", "Medium"), ("3", "High")],
         "Priority",

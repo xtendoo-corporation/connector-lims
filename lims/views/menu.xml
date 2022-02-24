@@ -49,11 +49,11 @@
         parent="cat_menu_lims_config"
         sequence="0"
     />
-     <menuitem
-        id="cat_menu_lims_lots_generate"
-        name="Generar Lotes/Nºde Serie"
-        parent="cat_menu_lims_product_parent"
-        sequence="2"
-        action="lims.action_menu_wizard_lot"
-    />
+<!--     <menuitem-->
+<!--        id="cat_menu_lims_lots_generate"-->
+<!--        name="Generar Lotes/Nºde Serie"-->
+<!--        parent="cat_menu_lims_product_parent"-->
+<!--        sequence="2"-->
+<!--        action="lims.action_menu_wizard_lot"-->
+<!--    />-->
 </odoo>

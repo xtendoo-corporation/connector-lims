@@ -35,6 +35,8 @@
         "views/sale_order_view.xml",
         # Formatos
         "views/label/label_print.xml",
+        # js
+        "templates/assets.xml",
     ],
     "images": ["static/description/banner.png"],
     "application": True,

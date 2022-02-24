@@ -11,10 +11,6 @@ class LimsAnalyticalMethod(models.Model):
     default_code = fields.Char("Reference", index=True)
     name = fields.Char(string="Name", store=True)
     description = fields.Char(string="Description", store=True)
-    method_uom = fields.Many2one(
-        "uom.uom",
-        string="Unit of Measure",
-    )
 
     uncertainty = fields.Float(string="uncertainty", store=True)
 

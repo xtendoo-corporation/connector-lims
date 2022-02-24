@@ -40,6 +40,9 @@ class LimsAnalysisNumericalResult(models.Model):
         default="none",
         store=True,
     )
+    to_invoice = fields.Boolean(string="billable", store=True, default=True)
+    show_in_report = fields.Boolean(string="Show in Report", store=True, default=True)
+    price = fields.Float("Price", store=True)
 
     def _get_value_result(self, value):
         result_value = ""
@@ -57,4 +60,5 @@ class LimsAnalysisNumericalResult(models.Model):
 
     @api.onchange("value")
     def _onchange_value(self):
-        self.result = self._get_value_result(self.value)
+        for line in self:
+            line.result = line._get_value_result(line.value)

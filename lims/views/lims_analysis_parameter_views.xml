@@ -21,6 +21,12 @@
                  <label for="parameter_uom" />
                 <field name="parameter_uom" />
                 <br />
+                <label for="analytical_method" />
+                <field name="analytical_method" />
+                <br />
+                <label for="price" />
+                <field name="price" />
+                <br />
                  <notebook>
                     <page string="Limit Results" name="limit_results">
                         <field
@@ -39,7 +45,11 @@
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="default_code" />
                 <field name="name" />
+                <field name="analytical_method" />
+                <field name="parameter_uom" />
+                <field name="price" />
             </tree>
         </field>
     </record>

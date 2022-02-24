@@ -65,5 +65,16 @@ class StockPicking(models.Model):
                                         "customer_id": self.partner_id.id,
                                         "customer_contact_id": self.partner_id.id,
                                         "lot_id": line.lot_id.id,
+                                        "pricelist_id": self.get_pricelist_id(line),
                                     }
                                 )
+
+    def get_pricelist_id(self, line):
+        if line.move_id.purchase_line_id.sale_order_id.pricelist_id:
+            return line.move_id.purchase_line_id.sale_order_id.pricelist_id.id
+        elif self.partner_id.parent_id and self.partner_id.parent_id.pricelist_id:
+            return self.partner_id.parent_id.pricelist_id.id
+        elif self.partner_id.pricelist_id:
+            return self.partner_id.pricelist_id.id
+        else:
+            return 1  # Buscar tarifa publica para evitar usar el id

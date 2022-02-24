@@ -7,10 +7,7 @@ from odoo import fields, models
 class LimsAnalysisParameter(models.Model):
     _name = "lims.analysis.parameter"
     _description = "Parameter LIMS"
-    # analysis_ids = fields.Many2one(
-    #     "lims.analysis",
-    #     "Analysis lims",
-    # )
+
     analysis_ids = fields.Many2many(
         "lims.analysis",
         "lims_analysis_lims_analysis_parameter_rel",
@@ -24,8 +21,10 @@ class LimsAnalysisParameter(models.Model):
         "lims.analysis.parameter.limit.result",
         "parameter_ids",
     )
-    parameter_uom = fields.Many2one("uom.uom", "Unit of Measure")
 
+    parameter_uom = fields.Many2one("uom.uom", "Unit of Measure")
+    analytical_method = fields.Many2one("lims.analytical.method", "Analytical Method")
+    price = fields.Float("Price", store=True)
     _sql_constraints = [
         ("code_uniq", "unique (default_code)", "Code already exists!"),
     ]
@@ -91,7 +90,7 @@ class LimsAnalysisParameter(models.Model):
             # ES BETWEEN
             else:
                 # if eval(str(value) + "" + operator_from) and eval(
-                #     str(value) + "" + operator_to
+                #    str(value) + "" + operator_to
                 # ):
                 result = parameter_result.state
         return result

@@ -94,6 +94,7 @@
                             name="General Information"
                             string="Información General"
                         >
+                                <field name="pricelist_id" />
                                 <field
                                 name="laboratory_id"
                                 domain="[('is_lab', '=', True)]"

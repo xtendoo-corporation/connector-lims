@@ -25,12 +25,7 @@
         <field name="arch" type="xml">
             <tree editable="bottom" multi_edit="1">
                 <field name="analysis_ids" readonly="1" invisible="1" />
-                <field
-                    name="parameter_ids"
-                    readonly="1"
-                    optional="show"
-                    string="Parámetro"
-                />
+                <field name="parameter_ids" optional="show" string="Parámetro" />
                 <field name="value" optional="show" string="valor" />
                 <field name="parameter_uom" optional="show" string="UdM" />
                 <field name="limit_value_char" optional="show" string="Valor Límite" />
@@ -56,7 +51,9 @@
                 />
                 <field name="reason" optional="show" string="Razón" />
                 <field name="comment" optional="show" string="Comentario" />
-
+                <field name="to_invoice" optional="show" string="To invoice" />
+                <field name="show_in_report" optional="show" string="Show in report" />
+                <field name="price" />
             </tree>
         </field>
     </record>
