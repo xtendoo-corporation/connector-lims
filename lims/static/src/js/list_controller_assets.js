@@ -18,7 +18,7 @@ odoo.define("lims.list_controller_assets", function (require) {
                     var oldValue = record.data[fieldName];
                     if (
                         oldValue &&
-                        record.data.id != this.model.get(recordId).data.id
+                        record.data.id !== this.model.get(recordId).data.id
                     ) {
                     } else {
                         result.push(nextRecordId);
